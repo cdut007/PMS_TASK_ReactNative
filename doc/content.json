@@ -1,0 +1,1903 @@
+Authenticate user
+Test URL: 
+http://www.xxx.com/hdxt/api/core/authenticate
+TYPE:
+Get
+
+Live URL: 
+  Introduction
+  Inputs
+
+
+  Processing
+  Outputs
+The usage statement will be return under data field in JSON. Example:
+	{	"code": "1000",	"message": "success",	"responseResult": {		"name": "jiepeng",		"realname": "deng jiepeng",		"email": "jiepeng12@globalroam.com",		"registerTime": 1415267880000,		"registerIp": "127.0.0.1",		"currentLoginTime": 1431779354072,		"currentLoginIp": "192.168.1.102",		"lastLoginTime": 1431778437000,		"lastLoginIp": "192.168.1.102",		"loginTimes": 101,		"roles": [			"班组承包人"		],		"privileges": [			{				"name": "工序问题",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep"			},			{				"name": "需要处理的问题",				"icon": "user.png",				"iconClass": "user.png",				"uri": "/hd/workstep/problem"			},			{				"name": "问题明细",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/detail"			},			{				"name": "处理问题",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/handle"			},			{				"name": "创建问题",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/add"			},			{				"name": "解决人",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/solvers"			},			{				"name": "上传文件",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/upload"			},			{				"name": "已解决问题",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/solved"			},			{				"name": "已解决问题明细",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/solved/detail"			},			{				"name": "未解决问题",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/unsolved"			},			{				"name": "未解决问题明细",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/unsolved/detail"			},			{				"name": "发起的问题",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/created"			},			{				"name": "发起的问题明细",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/created/detail"			},			{				"name": "问题解决确认",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/solveconfirm"			},			{				"name": "需要确认的问题",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/toconfirm"			},			{				"name": "发起的问题明细",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/toconfirm/detail"			},			{				"name": "问题确认",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/solveconfirm"			},			{				"name": "关注的问题",				"icon": null,				"iconClass": null,				"uri": "/hd/workstep/problem/toconcerned"			}		]	}}
+
+  Error codes
+
+  Sample
+Get method:
+http://www.xxx.com/workflow/api/hdxt/privilege/action?transId=12345&login_id=186024123456&password=xxxxxxx.
+
+
+
+
+
+滚动计划详细信息
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/rollingplan/{id}
+Live URL: 
+
+  Introduction
+Get 获取滚动计划表的详细信息
+  Inputs
+
+
+  Outputs
+{
+    "code": "1000",
+    "message": "success",
+    "responseResult": {
+        "id": 172,
+        "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+        "weldlistno": null,
+        "drawno": "07060DY-JPS01-JPD-003",
+        "rccm": "R1",
+        "areano": "RX",
+        "unitno": "1",
+        "weldno": "R002.001F",
+        "speciality": "GDZJ",
+        "materialtype": "CS",
+        "workpoint": 200,
+        "qualitynum": 1,
+        "worktime": 1,
+        "consteam": null,
+        "plandate": null,
+        "consdate": 1426348800000,
+        "isend": 0,
+        "consendman": null,
+        "welder": null,
+        "enddate": null,
+        "qcsign": 0,
+        "qcman": null,
+        "qcdate": null,
+        "remark": null,
+        "createdOn": 1431826745000,
+        "createdBy": "admin",
+        "updatedOn": null,
+        "updatedBy": null
+    }
+}
+
+  Error codes
+
+  Sample
+Get method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/rollingplan/172
+
+滚动计划列表
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/rollingplan
+Live URL: 
+  Introduction
+Get 滚动计划表的分页数据
+  Inputs
+
+
+  Outputs
+{
+    "code": "1000",
+    "message": "success",
+    "responseResult": {
+        "pagesize": 10,
+        "defaultStartIndex": 0,
+        "totalCounts": 3,
+        "pageCount": 1,
+        "startIndex": 0,
+        "pageNum": 1,
+        "startPage": 1,
+        "endPage": 1,
+        "datas": [
+            {
+                "id": 170,
+                "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+                "weldlistno": "HJKZ-TQP-20519-00518",
+                "drawno": "07060DY-JPS01-JPD-003",
+                "rccm": "NA",
+                "areano": "DY",
+                "unitno": "0",
+                "weldno": "M1",
+                "speciality": "GDHK",
+                "materialtype": "CS",
+                "workpoint": 0.325,
+                "qualitynum": 1,
+                "worktime": 1,
+                "consteam": "21",
+                "plandate": null,
+                "consdate": 1426348800000,
+                "isend": 1,
+                "consendman": null,
+                "welder": null,
+                "enddate": null,
+                "qcsign": 0,
+                "qcman": null,
+                "qcdate": null,
+                "remark": null,
+                "createdOn": 1431826745000,
+                "createdBy": "admin",
+                "updatedOn": null,
+                "updatedBy": null
+            },
+            {
+                "id": 171,
+                "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+                "weldlistno": "HJKZ-TQP-20519-00398",
+                "drawno": "07060DY-JPS01-JPD-003",
+                "rccm": "NA",
+                "areano": "DY",
+                "unitno": "0",
+                "weldno": "M10",
+                "speciality": "GDHK",
+                "materialtype": "CS",
+                "workpoint": 0.78,
+                "qualitynum": 1,
+                "worktime": 1,
+                "consteam": null,
+                "plandate": null,
+                "consdate": 1426348800000,
+                "isend": 0,
+                "consendman": null,
+                "welder": null,
+                "enddate": null,
+                "qcsign": 0,
+                "qcman": null,
+                "qcdate": null,
+                "remark": null,
+                "createdOn": 1431826745000,
+                "createdBy": "admin",
+                "updatedOn": null,
+                "updatedBy": null
+            },
+            {
+                "id": 172,
+                "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+                "weldlistno": null,
+                "drawno": "07060DY-JPS01-JPD-003",
+                "rccm": "R1",
+                "areano": "RX",
+                "unitno": "1",
+                "weldno": "R002.001F",
+                "speciality": "GDZJ",
+                "materialtype": "CS",
+                "workpoint": 200,
+                "qualitynum": 1,
+                "worktime": 1,
+                "consteam": null,
+                "plandate": null,
+                "consdate": 1426348800000,
+                "isend": 0,
+                "consendman": null,
+                "welder": null,
+                "enddate": null,
+                "qcsign": 0,
+                "qcman": null,
+                "qcdate": null,
+                "remark": null,
+                "createdOn": 1431826745000,
+                "createdBy": "admin",
+                "updatedOn": null,
+                "updatedBy": null
+            }
+        ],
+        "currentPage": 1
+    }
+}
+  Error codes
+
+  Sample
+Get method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/rollingplan?pagesize=10&pagenum=1
+工序步骤列表
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/workstep/rollingplan/{id}
+ Live URL: 
+
+  Introduction
+Get  工序分页显示数据
+  Inputs
+
+
+  Outputs
+{
+    "code": "1000",
+    "message": "success",
+    "responseResult": {
+        "pagesize": 10,
+        "defaultStartIndex": 0,
+        "totalCounts": 6,
+        "pageCount": 1,
+        "startIndex": 0,
+        "pageNum": 1,
+        "startPage": 1,
+        "endPage": 1,
+        "datas": [
+            {
+                "id": 579,
+                "stepno": 1,
+                "stepflag": "UNDO",
+                "stepname": "坡口加工",
+                "operater": null,
+                "operatedate": null,
+                "operatedesc": null,
+                "noticeainfo": null,
+                "noticeresult": null,
+                "noticeresultdesc": null,
+                "noticeaqc1": "W",
+                "witnesseraqc1": null,
+                "witnessdateaqc1": null,
+                "noticeaqc2": null,
+                "witnesseraqc2": null,
+                "witnessdateaqc2": null,
+                "noticeaqa": null,
+                "witnesseraqa": null,
+                "witnessdateaqa": null,
+                "noticeb": null,
+                "witnesserb": null,
+                "witnessdateb": null,
+                "noticec": null,
+                "witnesserc": null,
+                "witnessdatec": null,
+                "noticed": null,
+                "witnesserd": null,
+                "witnessdated": null,
+                "createdOn": 1431826745000,
+                "createdBy": "admin",
+                "updatedOn": null,
+                "updatedBy": null,
+                "rollingPlan": {
+                    "id": 171,
+                    "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+                    "weldlistno": "HJKZ-TQP-20519-00398",
+                    "drawno": "07060DY-JPS01-JPD-003",
+                    "rccm": "NA",
+                    "areano": "DY",
+                    "unitno": "0",
+                    "weldno": "M10",
+                    "speciality": "GDHK",
+                    "materialtype": "CS",
+                    "workpoint": 0.78,
+                    "qualitynum": 1,
+                    "worktime": 1,
+                    "consteam": null,
+                    "plandate": null,
+                    "consdate": 1426348800000,
+                    "isend": 0,
+                    "consendman": null,
+                    "welder": null,
+                    "enddate": null,
+                    "qcsign": 0,
+                    "qcman": null,
+                    "qcdate": null,
+                    "remark": null,
+                    "createdOn": 1431826745000,
+                    "createdBy": "admin",
+                    "updatedOn": null,
+                    "updatedBy": null
+                }
+            },
+            {
+                "id": 580,
+                "stepno": 2,
+                "stepflag": "UNDO",
+                "stepname": "内部清洁度检查",
+                "operater": null,
+                "operatedate": null,
+                "operatedesc": null,
+                "noticeainfo": null,
+                "noticeresult": null,
+                "noticeresultdesc": null,
+                "noticeaqc1": "W",
+                "witnesseraqc1": null,
+                "witnessdateaqc1": null,
+                "noticeaqc2": null,
+                "witnesseraqc2": null,
+                "witnessdateaqc2": null,
+                "noticeaqa": null,
+                "witnesseraqa": null,
+                "witnessdateaqa": null,
+                "noticeb": null,
+                "witnesserb": null,
+                "witnessdateb": null,
+                "noticec": null,
+                "witnesserc": null,
+                "witnessdatec": null,
+                "noticed": null,
+                "witnesserd": null,
+                "witnessdated": null,
+                "createdOn": 1431826745000,
+                "createdBy": "admin",
+                "updatedOn": null,
+                "updatedBy": null,
+                "rollingPlan": {
+                    "id": 171,
+                    "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+                    "weldlistno": "HJKZ-TQP-20519-00398",
+                    "drawno": "07060DY-JPS01-JPD-003",
+                    "rccm": "NA",
+                    "areano": "DY",
+                    "unitno": "0",
+                    "weldno": "M10",
+                    "speciality": "GDHK",
+                    "materialtype": "CS",
+                    "workpoint": 0.78,
+                    "qualitynum": 1,
+                    "worktime": 1,
+                    "consteam": null,
+                    "plandate": null,
+                    "consdate": 1426348800000,
+                    "isend": 0,
+                    "consendman": null,
+                    "welder": null,
+                    "enddate": null,
+                    "qcsign": 0,
+                    "qcman": null,
+                    "qcdate": null,
+                    "remark": null,
+                    "createdOn": 1431826745000,
+                    "createdBy": "admin",
+                    "updatedOn": null,
+                    "updatedBy": null
+                }
+            },
+            {
+                "id": 581,
+                "stepno": 3,
+                "stepflag": "UNDO",
+                "stepname": "组对",
+                "operater": null,
+                "operatedate": null,
+                "operatedesc": null,
+                "noticeainfo": null,
+                "noticeresult": null,
+                "noticeresultdesc": null,
+                "noticeaqc1": "W",
+                "witnesseraqc1": null,
+                "witnessdateaqc1": null,
+                "noticeaqc2": null,
+                "witnesseraqc2": null,
+                "witnessdateaqc2": null,
+                "noticeaqa": null,
+                "witnesseraqa": null,
+                "witnessdateaqa": null,
+                "noticeb": null,
+                "witnesserb": null,
+                "witnessdateb": null,
+                "noticec": null,
+                "witnesserc": null,
+                "witnessdatec": null,
+                "noticed": null,
+                "witnesserd": null,
+                "witnessdated": null,
+                "createdOn": 1431826745000,
+                "createdBy": "admin",
+                "updatedOn": null,
+                "updatedBy": null,
+                "rollingPlan": {
+                    "id": 171,
+                    "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+                    "weldlistno": "HJKZ-TQP-20519-00398",
+                    "drawno": "07060DY-JPS01-JPD-003",
+                    "rccm": "NA",
+                    "areano": "DY",
+                    "unitno": "0",
+                    "weldno": "M10",
+                    "speciality": "GDHK",
+                    "materialtype": "CS",
+                    "workpoint": 0.78,
+                    "qualitynum": 1,
+                    "worktime": 1,
+                    "consteam": null,
+                    "plandate": null,
+                    "consdate": 1426348800000,
+                    "isend": 0,
+                    "consendman": null,
+                    "welder": null,
+                    "enddate": null,
+                    "qcsign": 0,
+                    "qcman": null,
+                    "qcdate": null,
+                    "remark": null,
+                    "createdOn": 1431826745000,
+                    "createdBy": "admin",
+                    "updatedOn": null,
+                    "updatedBy": null
+                }
+            },
+            {
+                "id": 582,
+                "stepno": 4,
+                "stepflag": "UNDO",
+                "stepname": "焊缝标识、标记",
+                "operater": null,
+                "operatedate": null,
+                "operatedesc": null,
+                "noticeainfo": null,
+                "noticeresult": null,
+                "noticeresultdesc": null,
+                "noticeaqc1": "W",
+                "witnesseraqc1": null,
+                "witnessdateaqc1": null,
+                "noticeaqc2": null,
+                "witnesseraqc2": null,
+                "witnessdateaqc2": null,
+                "noticeaqa": null,
+                "witnesseraqa": null,
+                "witnessdateaqa": null,
+                "noticeb": null,
+                "witnesserb": null,
+                "witnessdateb": null,
+                "noticec": null,
+                "witnesserc": null,
+                "witnessdatec": null,
+                "noticed": null,
+                "witnesserd": null,
+                "witnessdated": null,
+                "createdOn": 1431826745000,
+                "createdBy": "admin",
+                "updatedOn": null,
+                "updatedBy": null,
+                "rollingPlan": {
+                    "id": 171,
+                    "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+                    "weldlistno": "HJKZ-TQP-20519-00398",
+                    "drawno": "07060DY-JPS01-JPD-003",
+                    "rccm": "NA",
+                    "areano": "DY",
+                    "unitno": "0",
+                    "weldno": "M10",
+                    "speciality": "GDHK",
+                    "materialtype": "CS",
+                    "workpoint": 0.78,
+                    "qualitynum": 1,
+                    "worktime": 1,
+                    "consteam": null,
+                    "plandate": null,
+                    "consdate": 1426348800000,
+                    "isend": 0,
+                    "consendman": null,
+                    "welder": null,
+                    "enddate": null,
+                    "qcsign": 0,
+                    "qcman": null,
+                    "qcdate": null,
+                    "remark": null,
+                    "createdOn": 1431826745000,
+                    "createdBy": "admin",
+                    "updatedOn": null,
+                    "updatedBy": null
+                }
+            },
+            {
+                "id": 583,
+                "stepno": 5,
+                "stepflag": "UNDO",
+                "stepname": "焊接",
+                "operater": null,
+                "operatedate": null,
+                "operatedesc": null,
+                "noticeainfo": null,
+                "noticeresult": null,
+                "noticeresultdesc": null,
+                "noticeaqc1": "W",
+                "witnesseraqc1": null,
+                "witnessdateaqc1": null,
+                "noticeaqc2": null,
+                "witnesseraqc2": null,
+                "witnessdateaqc2": null,
+                "noticeaqa": null,
+                "witnesseraqa": null,
+                "witnessdateaqa": null,
+                "noticeb": null,
+                "witnesserb": null,
+                "witnessdateb": null,
+                "noticec": null,
+                "witnesserc": null,
+                "witnessdatec": null,
+                "noticed": null,
+                "witnesserd": null,
+                "witnessdated": null,
+                "createdOn": 1431826745000,
+                "createdBy": "admin",
+                "updatedOn": null,
+                "updatedBy": null,
+                "rollingPlan": {
+                    "id": 171,
+                    "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+                    "weldlistno": "HJKZ-TQP-20519-00398",
+                    "drawno": "07060DY-JPS01-JPD-003",
+                    "rccm": "NA",
+                    "areano": "DY",
+                    "unitno": "0",
+                    "weldno": "M10",
+                    "speciality": "GDHK",
+                    "materialtype": "CS",
+                    "workpoint": 0.78,
+                    "qualitynum": 1,
+                    "worktime": 1,
+                    "consteam": null,
+                    "plandate": null,
+                    "consdate": 1426348800000,
+                    "isend": 0,
+                    "consendman": null,
+                    "welder": null,
+                    "enddate": null,
+                    "qcsign": 0,
+                    "qcman": null,
+                    "qcdate": null,
+                    "remark": null,
+                    "createdOn": 1431826745000,
+                    "createdBy": "admin",
+                    "updatedOn": null,
+                    "updatedBy": null
+                }
+            },
+            {
+                "id": 584,
+                "stepno": 6,
+                "stepflag": "UNDO",
+                "stepname": "焊缝外观检查",
+                "operater": null,
+                "operatedate": null,
+                "operatedesc": null,
+                "noticeainfo": null,
+                "noticeresult": null,
+                "noticeresultdesc": null,
+                "noticeaqc1": "W",
+                "witnesseraqc1": null,
+                "witnessdateaqc1": null,
+                "noticeaqc2": "W",
+                "witnesseraqc2": null,
+                "witnessdateaqc2": null,
+                "noticeaqa": null,
+                "witnesseraqa": null,
+                "witnessdateaqa": null,
+                "noticeb": null,
+                "witnesserb": null,
+                "witnessdateb": null,
+                "noticec": null,
+                "witnesserc": null,
+                "witnessdatec": null,
+                "noticed": null,
+                "witnesserd": null,
+                "witnessdated": null,
+                "createdOn": 1431826745000,
+                "createdBy": "admin",
+                "updatedOn": null,
+                "updatedBy": null,
+                "rollingPlan": {
+                    "id": 171,
+                    "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+                    "weldlistno": "HJKZ-TQP-20519-00398",
+                    "drawno": "07060DY-JPS01-JPD-003",
+                    "rccm": "NA",
+                    "areano": "DY",
+                    "unitno": "0",
+                    "weldno": "M10",
+                    "speciality": "GDHK",
+                    "materialtype": "CS",
+                    "workpoint": 0.78,
+                    "qualitynum": 1,
+                    "worktime": 1,
+                    "consteam": null,
+                    "plandate": null,
+                    "consdate": 1426348800000,
+                    "isend": 0,
+                    "consendman": null,
+                    "welder": null,
+                    "enddate": null,
+                    "qcsign": 0,
+                    "qcman": null,
+                    "qcdate": null,
+                    "remark": null,
+                    "createdOn": 1431826745000,
+                    "createdBy": "admin",
+                    "updatedOn": null,
+                    "updatedBy": null
+                }
+            }
+        ],
+        "currentPage": 1
+    }
+}
+  Error codes
+
+  Sample
+Get method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/workstep/rollingplan/171?pagesize=10&pagenum=1
+工序步骤详细
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/workstep/579
+Live URL: 
+
+  Introduction
+Get  工序步骤的详细信息
+  Inputs
+
+
+  Outputs
+{
+    "code": "1000",
+    "message": "success",
+    "responseResult": {
+        "id": 579,
+        "stepno": 1,
+        "stepflag": "UNDO",
+        "stepname": "坡口加工",
+        "operater": null,
+        "operatedate": null,
+        "operatedesc": null,
+        "noticeainfo": null,
+        "noticeresult": null,
+        "noticeresultdesc": null,
+        "noticeaqc1": "W",
+        "witnesseraqc1": null,
+        "witnessdateaqc1": null,
+        "noticeaqc2": null,
+        "witnesseraqc2": null,
+        "witnessdateaqc2": null,
+        "noticeaqa": null,
+        "witnesseraqa": null,
+        "witnessdateaqa": null,
+        "noticeb": null,
+        "witnesserb": null,
+        "witnessdateb": null,
+        "noticec": null,
+        "witnesserc": null,
+        "witnessdatec": null,
+        "noticed": null,
+        "witnesserd": null,
+        "witnessdated": null,
+        "createdOn": 1431826745000,
+        "createdBy": "admin",
+        "updatedOn": null,
+        "updatedBy": null,
+        "rollingPlan": {
+            "id": 171,
+            "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+            "weldlistno": "HJKZ-TQP-20519-00398",
+            "drawno": "07060DY-JPS01-JPD-003",
+            "rccm": "NA",
+            "areano": "DY",
+            "unitno": "0",
+            "weldno": "M10",
+            "speciality": "GDHK",
+            "materialtype": "CS",
+            "workpoint": 0.78,
+            "qualitynum": 1,
+            "worktime": 1,
+            "consteam": null,
+            "plandate": null,
+            "consdate": 1426348800000,
+            "isend": 0,
+            "consendman": null,
+            "welder": null,
+            "enddate": null,
+            "qcsign": 0,
+            "qcman": null,
+            "qcdate": null,
+            "remark": null,
+            "createdOn": 1431826745000,
+            "createdBy": "admin",
+            "updatedOn": null,
+            "updatedBy": null
+        }
+    }
+}
+  Error codes
+
+  Sample
+Get method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/workstep/579
+分派到施工班组的滚动计划信息列表
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/team
+Live URL: 
+  Introduction
+Get  分派到施工班组的滚动计划信息列表，分页获取
+  Inputs
+
+
+  Outputs
+{
+    "code": "1000",
+    "message": "success",
+    "responseResult": {
+        "pagesize": 10,
+        "defaultStartIndex": 0,
+        "totalCounts": 2,
+        "pageCount": 1,
+        "startIndex": 0,
+        "pageNum": 1,
+        "startPage": 1,
+        "endPage": 1,
+        "datas": [
+            {
+                "id": 170,
+                "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+                "weldlistno": "HJKZ-TQP-20519-00518",
+                "drawno": "07060DY-JPS01-JPD-003",
+                "rccm": "NA",
+                "areano": "DY",
+                "unitno": "0",
+                "weldno": "M1",
+                "speciality": "GDHK",
+                "materialtype": "CS",
+                "workpoint": 0.325,
+                "qualitynum": 1,
+                "worktime": 1,
+                "consteam": null,
+                "plandate": null,
+                "consdate": 1426348800000,
+                "isend": 0,
+                "consendman": null,
+                "welder": null,
+                "enddate": null,
+                "qcsign": 0,
+                "qcman": null,
+                "qcdate": null,
+                "remark": null,
+                "createdOn": 1431826745000,
+                "createdBy": "admin",
+                "updatedOn": null,
+                "updatedBy": null
+            },
+            {
+                "id": 171,
+                "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+                "weldlistno": "HJKZ-TQP-20519-00398",
+                "drawno": "07060DY-JPS01-JPD-003",
+                "rccm": "NA",
+                "areano": "DY",
+                "unitno": "0",
+                "weldno": "M10",
+                "speciality": "GDHK",
+                "materialtype": "CS",
+                "workpoint": 0.78,
+                "qualitynum": 1,
+                "worktime": 1,
+                "consteam": null,
+                "plandate": null,
+                "consdate": 1426348800000,
+                "isend": 0,
+                "consendman": null,
+                "welder": null,
+                "enddate": null,
+                "qcsign": 0,
+                "qcman": null,
+                "qcdate": null,
+                "remark": null,
+                "createdOn": 1431826745000,
+                "createdBy": "admin",
+                "updatedOn": null,
+                "updatedBy": null
+            }
+        ],
+        "currentPage": 1
+    }
+}
+  Error codes
+
+  Sample
+Get method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/team?pagesize=10&pagenum=1&condition=equal&consteam=21
+获取班组列表
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/team/teams
+Live URL: 
+  Introduction
+Get  班组信息列表，所有班组负责人所有班组
+  Inputs
+
+
+  Outputs
+{
+    "code": "1000",
+    "message": "success",
+    "responseResult": [
+        {
+            "id": 21,
+            "name": "张孝林班"
+        },
+        {
+            "id": 26,
+            "name": "何良斌班"
+        },
+        {
+            "id": 31,
+            "name": "李和平班"
+        },
+        {
+            "id": 36,
+            "name": "毛国强班"
+        },
+        {
+            "id": 41,
+            "name": "刘兵班"
+        }
+    ]
+}
+  Error codes
+
+  Sample
+Get method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/team/teams
+分派班组
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/team
+Live URL: 
+  Introduction
+POST  将滚动计划信息分派到班组
+  Inputs
+
+
+  Outputs
+{
+    "code": "1000",
+    "message": "success",
+    "responseResult": true
+}
+  Error codes
+
+  Sample
+POST method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/team?teamId=26&ids=170&ids=171
+班组改派
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/team
+Live URL: 
+  Introduction
+PUT  修改分派信息
+  Inputs
+
+
+  Outputs
+{
+    "code": "1000",
+    "message": "success",
+    "responseResult": true
+}
+  Error codes
+
+  Sample
+PUT method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/team?teamId=26&ids=170&ids=171
+解除分派班组
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/team
+Live URL: 
+  Introduction
+DELETE  将所有指定的滚动计划表设置为未分派班组状态
+  Inputs
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":null}
+  Error codes
+
+  Sample
+DELETE method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/team?ids=170&ids=171
+ 获取班组所有组长
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/endman/endmen
+Live URL: 
+  Introduction
+Get  获取班组所有组长
+  Inputs
+
+
+  Outputs
+{
+    "code": "1000",
+    "message": "success",
+    "responseResult": [
+        {
+            "parent": {
+                "id": 21,
+                "name": "张孝林班"
+            },
+            "children": [
+                {
+                    "id": 22,
+                    "name": "张旭组"
+                },
+                {
+                    "id": 23,
+                    "name": "张龙组"
+                },
+                {
+                    "id": 24,
+                    "name": "王林组"
+                },
+                {
+                    "id": 25,
+                    "name": "王青山组"
+                }
+            ]
+        }
+    ]
+}
+  Error codes
+
+  Sample
+Get method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/endman/endmen?loginUserId=89
+ 分派滚动计划任务到组长
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/endman
+Live URL: 
+  Introduction
+POST  分派滚动计划任务到组长
+  Inputs
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":true}
+  Error codes
+
+  Sample
+POST method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/endman?loginUserId=89&ids=171&endManId=22&startTime=2015-05-23&endTime=2015-05-26
+ 修改分派到组长
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/endman
+Live URL: 
+  Introduction
+PUT  改派组长
+  Inputs
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":true}
+  Error codes
+
+  Sample
+PUT method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/endman?loginUserId=89&ids=171&endManId=22&startTime=2015-05-23&endTime=2015-05-25
+ 解除组长分派
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/endman
+Live URL: 
+  Introduction
+DELETE  将该条滚动计划设置为未分派组长
+  Inputs
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":null}
+  Error codes
+
+  Sample
+DELETE method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/endman?ids=171
+
+ 我的任务 － 单条工序完成
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/mytask/workstep
+Live URL: 
+  Introduction
+POST  我的任务中的单条工序完成
+  Inputs
+
+
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":true}
+  Error codes
+
+  Sample
+POST method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/mytask/workstep?loginUserId=94&id=573&operater=fjdks&operatedate=2015-05-24%2022%3A22%3A45
+ 修改工序步骤完成信息
+Test URL: 
+
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/mytask/workstep
+Live URL: 
+  Introduction
+PUT  修改工序步骤完成信息
+  Inputs
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":null}
+  Error codes
+
+  Sample
+PUT method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/mytask/workstep?loginUserId=94&id=573&operater=fjdks&operatedate=2015-05-24%2022%3A22%3A45
+
+ 我的任务 － 整个工序完成
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/mytask/rollingplan
+Live URL: 
+  Introduction
+POST  整个工序完成时的回填信息
+  Inputs
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":null}
+  Error codes
+
+  Sample
+POST method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/mytask/rollingplan?loginUserId=94&id=170&welder=fjdks&enddate=2015-05-24%2022%3A22%3A45
+ 修改工序全部完成回填信息
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/mytask/rollingplan
+Live URL: 
+  Introduction
+PUT  修改工序全部完成回填信息
+  Inputs
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":null}
+  Error codes
+
+  Sample
+PUT method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/mytask/rollingplan?loginUserId=94&id=170&welder=fjdks&enddate=2015-05-24%2022%3A22%3A45
+ 工序对应的见证列表
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/workstep/{id}
+Live URL: 
+  Introduction
+GET  工序对应的见证列表
+  Inputs
+
+
+  Outputs
+{
+    "code": "1000",
+    "message": "success",
+    "responseResult": {
+        "pagesize": 10,
+        "defaultStartIndex": 0,
+        "totalCounts": 1,
+        "pageCount": 1,
+        "startIndex": 0,
+        "pageNum": 1,
+        "startPage": 1,
+        "endPage": 1,
+        "datas": [
+            {
+                "id": 1,
+                "witness": "47",
+                "witnesser": null,
+                "witnesserName": null,
+                "witnessdes": "",
+                "witnessaddress": "fdsaf",
+                "witnessdate": 1432284344000,
+                "status": 0,
+                "isok": 0,
+                "remark": null,
+                "triggerName": "af93243b-088b-4dc6-8db8-528f510c5acd",
+                "noticeType": null,
+                "noticePoint": null,
+                "createdOn": 1431852349000,
+                "createdBy": "admin",
+                "updatedOn": null,
+                "updatedBy": null,
+                "workStep": {
+                    "id": 574,
+                    "stepno": 2,
+                    "stepflag": "PREPARE",
+                    "stepname": "内部清洁度检查",
+                    "operater": "fdsa",
+                    "operatedate": 1432915200000,
+                    "operatedesc": "",
+                    "noticeainfo": null,
+                    "noticeresult": null,
+                    "noticeresultdesc": null,
+                    "noticeaqc1": "W",
+                    "witnesseraqc1": null,
+                    "witnessdateaqc1": null,
+                    "noticeaqc2": null,
+                    "witnesseraqc2": null,
+                    "witnessdateaqc2": null,
+                    "noticeaqa": null,
+                    "witnesseraqa": null,
+                    "witnessdateaqa": null,
+                    "noticeb": null,
+                    "witnesserb": null,
+                    "witnessdateb": null,
+                    "noticec": null,
+                    "witnesserc": null,
+                    "witnessdatec": null,
+                    "noticed": null,
+                    "witnesserd": null,
+                    "witnessdated": null,
+                    "createdOn": 1431826745000,
+                    "createdBy": "admin",
+                    "updatedOn": 1431852349000,
+                    "updatedBy": "admin",
+                    "rollingPlan": {
+                        "id": 170,
+                        "qualityplanno": "NZPT-TQP-0DY-JPD-P-20519",
+                        "weldlistno": "HJKZ-TQP-20519-00518",
+                        "drawno": "07060DY-JPS01-JPD-003",
+                        "rccm": "NA",
+                        "areano": "DY",
+                        "unitno": "0",
+                        "weldno": "M1",
+                        "speciality": "GDHK",
+                        "materialtype": "CS",
+                        "workpoint": 0.325,
+                        "qualitynum": 1,
+                        "worktime": 1,
+                        "consteam": "26",
+                        "plandate": "2015-05-21至2015-05-23",
+                        "consdate": 1426348800000,
+                        "isend": 1,
+                        "consendman": "27",
+                        "welder": "xxx",
+                        "enddate": 1432477365000,
+                        "qcsign": 0,
+                        "qcman": null,
+                        "qcdate": null,
+                        "remark": null,
+                        "createdOn": 1431826745000,
+                        "createdBy": "admin",
+                        "updatedOn": 1431851684000,
+                        "updatedBy": "zhangxu"
+                    }
+                },
+                "parent": null,
+                "children": []
+            }
+        ],
+        "currentPage": 1
+    }
+}
+  Error codes
+
+  Sample
+GET method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/workstep/574?pagesize=10&pagenum=1
+
+ 见证结果类型
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnessresulttype
+Live URL: 
+  Introduction
+GET  见证结果类型
+  Inputs
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":{"3":"合格","1":"不合格"}}
+  Error codes
+
+  Sample
+GET method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnessresulttype
+
+ 所有分派见证列表
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness
+Live URL: 
+  Introduction
+GET所有见证列表 分派和未分派
+  Inputs
+
+
+  Outputs
+{
+  "code" : "1000",
+  "message" : "success",
+  "responseResult" : {
+    "pagesize" : 10,
+    "defaultStartIndex" : 0,
+    "totalCounts" : 0,
+    "pageCount" : 0,
+    "startIndex" : 0,
+    "pageNum" : 1,
+    "startPage" : 1,
+    "endPage" : 1,
+    "datas" : [
+      {
+        "id" : 1,
+        "witness" : "47",
+        "witnesser" : null,
+        "witnesserName" : null,
+        "witnessdes" : "",
+        "witnessaddress" : "fdsaf",
+        "witnessdate" : 1432284344000,
+        "status" : 1,
+        "isok" : 0,
+        "remark" : null,
+        "triggerName" : "af93243b-088b-4dc6-8db8-528f510c5acd",
+        "noticeType" : null,
+        "noticePoint" : null,
+        "createdOn" : 1431852349000,
+        "createdBy" : "admin",
+        "updatedOn" : null,
+        "updatedBy" : null,
+        "workStep" : {
+          "id" : 574,
+          "stepno" : 2,
+          "stepflag" : "DONE",
+          "stepname" : "内部清洁度检查",
+          "operater" : "fdsa",
+          "operatedate" : 1432915200000,
+          "operatedesc" : "",
+          "noticeainfo" : null,
+          "noticeresult" : "3",
+          "noticeresultdesc" : null,
+          "noticeaqc1" : "W",
+          "witnesseraqc1" : null,
+          "witnessdateaqc1" : null,
+          "noticeaqc2" : null,
+          "witnesseraqc2" : null,
+          "witnessdateaqc2" : null,
+          "noticeaqa" : null,
+          "witnesseraqa" : "123",
+          "witnessdateaqa" : null,
+          "noticeb" : null,
+          "witnesserb" : null,
+          "witnessdateb" : null,
+          "noticec" : null,
+          "witnesserc" : null,
+          "witnessdatec" : null,
+          "noticed" : null,
+          "witnesserd" : null,
+          "witnessdated" : null,
+          "createdOn" : 1431826745000,
+          "createdBy" : "admin",
+          "updatedOn" : 1431864000000,
+          "updatedBy" : "lindong",
+          "rollingPlan" : {
+            "id" : 170,
+            "qualityplanno" : "NZPT-TQP-0DY-JPD-P-20519",
+            "weldlistno" : "HJKZ-TQP-20519-00518",
+            "drawno" : "07060DY-JPS01-JPD-003",
+            "rccm" : "NA",
+            "areano" : "DY",
+            "unitno" : "0",
+            "weldno" : "M1",
+            "speciality" : "GDHK",
+            "materialtype" : "CS",
+            "workpoint" : 0.325,
+            "qualitynum" : 1.0,
+            "worktime" : 1.0,
+            "consteam" : "26",
+            "plandate" : "2015-05-21至2015-05-23",
+            "consdate" : 1426348800000,
+            "isend" : 1,
+            "consendman" : "27",
+            "welder" : "xxx",
+            "enddate" : 1432477365000,
+            "qcsign" : 0,
+            "qcman" : null,
+            "qcdate" : null,
+            "remark" : null,
+            "createdOn" : 1431826745000,
+            "createdBy" : "admin",
+            "updatedOn" : 1431851684000,
+            "updatedBy" : "zhangxu"
+          }
+        },
+        "parent" : null
+      }
+    ],
+    "currentPage" : 1
+  }
+}
+  Error codes
+
+  Sample
+GET method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness?loginUserId=127&pagesize=10&pagenum=1&condition=equal
+ 见证的类型
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnessertype
+Live URL: 
+  Introduction
+GET  见证的类型，包含（R 、H 、W）及其显示名称
+  Inputs
+
+
+  Outputs
+{
+  "code" : "1000",
+  "message" : "success",
+  "responseResult" : [
+    {
+      "setkey" : "W",
+      "setvalue" : "W级见证人"
+    },
+    {
+      "setkey" : "H",
+      "setvalue" : "H级见证人"
+    },
+    {
+      "setkey" : "R",
+      "setvalue" : "R级见证人"
+    },
+    {
+      "setkey" : "witnessTeam",
+      "setvalue" : "见证组组长"
+    }
+  ]
+}
+  Error codes
+
+  Sample
+GET method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnessertype
+ 见证组组长列表
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/team
+Live URL: 
+  Introduction
+GET  见证组组长列表
+  Inputs
+
+
+  Outputs
+{
+  "code" : "1000",
+  "message" : "success",
+  "responseResult" : [
+    {
+      "id" : 47,
+      "name" : "林动见证组"
+    },
+    {
+      "id" : 51,
+      "name" : "王爱伟见证组"
+    }
+  ]
+}
+  Error codes
+
+  Sample
+GET method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/team
+ 见证人列表
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnesser
+Live URL: 
+  Introduction
+GET  见证人列表
+  Inputs
+
+
+  Outputs
+{
+  "code" : "1000",
+  "message" : "success",
+  "responseResult" : [
+    {
+      "witnesserType" : "见证组组长",
+      "witnesser" : [
+        {
+          "id" : 127,
+          "name" : "lindong",
+          "realname" : "林动",
+          "password" : "594afe5e1f8ac83827ca43434f7dae1a",
+          "email" : "example@qq.com",
+          "registerTime" : 1429545600000,
+          "registerIp" : "127.0.0.1",
+          "currentLoginTime" : 1431578290000,
+          "currentLoginIp" : "192.168.2.163",
+          "lastLoginTime" : 1431502981000,
+          "lastLoginIp" : "192.168.2.119",
+          "loginTimes" : 21,
+          "defaultAdmin" : false,
+          "isDefaultAdminFlag" : 0
+        }
+      ]
+    },
+    {
+      "witnesserType" : "R级见证人",
+      "witnesser" : [
+        {
+          "id" : 126,
+          "name" : "shenhui",
+          "realname" : "沈会",
+          "password" : "594afe5e1f8ac83827ca43434f7dae1a",
+          "email" : "example@qq.com",
+          "registerTime" : 1429545600000,
+          "registerIp" : "127.0.0.1",
+          "currentLoginTime" : null,
+          "currentLoginIp" : "127.0.0.1",
+          "lastLoginTime" : null,
+          "lastLoginIp" : "127.0.0.1",
+          "loginTimes" : null,
+          "defaultAdmin" : false,
+          "isDefaultAdminFlag" : 0
+        }
+      ]
+    },
+    {
+      "witnesserType" : "H级见证人",
+      "witnesser" : [
+        {
+          "id" : 124,
+          "name" : "wangchun",
+          "realname" : "王醇",
+          "password" : "594afe5e1f8ac83827ca43434f7dae1a",
+          "email" : "example@qq.com",
+          "registerTime" : 1429545600000,
+          "registerIp" : "127.0.0.1",
+          "currentLoginTime" : null,
+          "currentLoginIp" : "127.0.0.1",
+          "lastLoginTime" : null,
+          "lastLoginIp" : "127.0.0.1",
+          "loginTimes" : null,
+          "defaultAdmin" : false,
+          "isDefaultAdminFlag" : 0
+        },
+        {
+          "id" : 125,
+          "name" : "linqiang",
+          "realname" : "林墙",
+          "password" : "594afe5e1f8ac83827ca43434f7dae1a",
+          "email" : "example@qq.com",
+          "registerTime" : 1429545600000,
+          "registerIp" : "127.0.0.1",
+          "currentLoginTime" : 1430831703000,
+          "currentLoginIp" : "127.0.0.1",
+          "lastLoginTime" : 1430830714000,
+          "lastLoginIp" : "127.0.0.1",
+          "loginTimes" : 3,
+          "defaultAdmin" : false,
+          "isDefaultAdminFlag" : 0
+        }
+      ]
+    },
+    {
+      "witnesserType" : "W级见证人",
+      "witnesser" : [
+        {
+          "id" : 123,
+          "name" : "lixiandong",
+          "realname" : "李显东",
+          "password" : "594afe5e1f8ac83827ca43434f7dae1a",
+          "email" : "example@qq.com",
+          "registerTime" : 1429545600000,
+          "registerIp" : "127.0.0.1",
+          "currentLoginTime" : 1430923124000,
+          "currentLoginIp" : "127.0.0.1",
+          "lastLoginTime" : 1430921641000,
+          "lastLoginIp" : "127.0.0.1",
+          "loginTimes" : 3,
+          "defaultAdmin" : false,
+          "isDefaultAdminFlag" : 0
+        }
+      ]
+    }
+  ]
+}
+  Error codes
+
+  Sample
+GET method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnesser?witness=47
+ 分派见证人
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnesser
+Live URL: 
+  Introduction
+POST  分派见证人
+  Inputs
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":null}
+  Error codes
+
+  Sample
+POST method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnesser?witnessid=1&loginUserId=127&witnesseraqa=123
+ 修改分派见证
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnesser
+Live URL: 
+  Introduction
+PUT  修改分派见证
+  Inputs
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":null}
+  Error codes
+
+  Sample
+PUT method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnesser?witnessid=1&loginUserId=127&witnesseraqa=123&id=575
+ 组长填写见证结果
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnesser/result
+Live URL: 
+  Introduction
+POST  组长填写见证结果
+  Inputs
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":null}
+  Error codes
+
+  Sample
+POST method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnesser/result?noticeresult=3&loginUserId=127&id=574
+ 修改见证结果
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnesser/result
+Live URL: 
+  Introduction
+PUT  修改见证结果
+  Inputs
+
+
+  Outputs
+{"code":"1000","message":"success","responseResult":null}
+  Error codes
+
+  Sample
+PUT method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/witnesser/result?noticeresult=3&loginUserId=127&id=575
+ 我的见证
+Test URL: 
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/myevent
+Live URL: 
+  Introduction
+GET 普通见证人看到的我的见证
+  Inputs
+
+
+  Outputs
+{
+  "code" : "1000",
+  "message" : "success",
+  "responseResult" : {
+    "pagesize" : 10,
+    "defaultStartIndex" : 0,
+    "totalCounts" : 1,
+    "pageCount" : 1,
+    "startIndex" : 0,
+    "pageNum" : 1,
+    "startPage" : 1,
+    "endPage" : 1,
+    "datas" : [
+      {
+        "id" : 3,
+        "witness" : null,
+        "witnesser" : "123",
+        "witnesserName" : null,
+        "witnessdes" : null,
+        "witnessaddress" : null,
+        "witnessdate" : null,
+        "status" : 0,
+        "isok" : 0,
+        "remark" : null,
+        "triggerName" : null,
+        "noticeType" : null,
+        "noticePoint" : "A_QA",
+        "createdOn" : 1431864869000,
+        "createdBy" : "lindong",
+        "updatedOn" : null,
+        "updatedBy" : null,
+        "workStep" : {
+          "id" : 574,
+          "stepno" : 2,
+          "stepflag" : "DONE",
+          "stepname" : "内部清洁度检查",
+          "operater" : "fdsa",
+          "operatedate" : 1432915200000,
+          "operatedesc" : "",
+          "noticeainfo" : null,
+          "noticeresult" : "3",
+          "noticeresultdesc" : null,
+          "noticeaqc1" : "W",
+          "witnesseraqc1" : null,
+          "witnessdateaqc1" : null,
+          "noticeaqc2" : null,
+          "witnesseraqc2" : null,
+          "witnessdateaqc2" : null,
+          "noticeaqa" : null,
+          "witnesseraqa" : "123",
+          "witnessdateaqa" : null,
+          "noticeb" : null,
+          "witnesserb" : null,
+          "witnessdateb" : null,
+          "noticec" : null,
+          "witnesserc" : null,
+          "witnessdatec" : null,
+          "noticed" : null,
+          "witnesserd" : null,
+          "witnessdated" : null,
+          "createdOn" : 1431826745000,
+          "createdBy" : "admin",
+          "updatedOn" : 1431864000000,
+          "updatedBy" : "lindong",
+          "rollingPlan" : {
+            "id" : 170,
+            "qualityplanno" : "NZPT-TQP-0DY-JPD-P-20519",
+            "weldlistno" : "HJKZ-TQP-20519-00518",
+            "drawno" : "07060DY-JPS01-JPD-003",
+            "rccm" : "NA",
+            "areano" : "DY",
+            "unitno" : "0",
+            "weldno" : "M1",
+            "speciality" : "GDHK",
+            "materialtype" : "CS",
+            "workpoint" : 0.325,
+            "qualitynum" : 1.0,
+            "worktime" : 1.0,
+            "consteam" : "26",
+            "plandate" : "2015-05-21至2015-05-23",
+            "consdate" : 1426348800000,
+            "isend" : 1,
+            "consendman" : "27",
+            "welder" : "xxx",
+            "enddate" : 1432477365000,
+            "qcsign" : 0,
+            "qcman" : null,
+            "qcdate" : null,
+            "remark" : null,
+            "createdOn" : 1431826745000,
+            "createdBy" : "admin",
+            "updatedOn" : 1431851684000,
+            "updatedBy" : "zhangxu"
+          }
+        },
+        "parent" : {
+          "id" : 1,
+          "witness" : "47",
+          "witnesser" : null,
+          "witnesserName" : null,
+          "witnessdes" : "",
+          "witnessaddress" : "fdsaf",
+          "witnessdate" : 1432284344000,
+          "status" : 1,
+          "isok" : 0,
+          "remark" : null,
+          "triggerName" : "af93243b-088b-4dc6-8db8-528f510c5acd",
+          "noticeType" : null,
+          "noticePoint" : null,
+          "createdOn" : 1431852349000,
+          "createdBy" : "admin",
+          "updatedOn" : null,
+          "updatedBy" : null,
+          "workStep" : {
+            "id" : 574,
+            "stepno" : 2,
+            "stepflag" : "DONE",
+            "stepname" : "内部清洁度检查",
+            "operater" : "fdsa",
+            "operatedate" : 1432915200000,
+            "operatedesc" : "",
+            "noticeainfo" : null,
+            "noticeresult" : "3",
+            "noticeresultdesc" : null,
+            "noticeaqc1" : "W",
+            "witnesseraqc1" : null,
+            "witnessdateaqc1" : null,
+            "noticeaqc2" : null,
+            "witnesseraqc2" : null,
+            "witnessdateaqc2" : null,
+            "noticeaqa" : null,
+            "witnesseraqa" : "123",
+            "witnessdateaqa" : null,
+            "noticeb" : null,
+            "witnesserb" : null,
+            "witnessdateb" : null,
+            "noticec" : null,
+            "witnesserc" : null,
+            "witnessdatec" : null,
+            "noticed" : null,
+            "witnesserd" : null,
+            "witnessdated" : null,
+            "createdOn" : 1431826745000,
+            "createdBy" : "admin",
+            "updatedOn" : 1431864000000,
+            "updatedBy" : "lindong",
+            "rollingPlan" : {
+              "id" : 170,
+              "qualityplanno" : "NZPT-TQP-0DY-JPD-P-20519",
+              "weldlistno" : "HJKZ-TQP-20519-00518",
+              "drawno" : "07060DY-JPS01-JPD-003",
+              "rccm" : "NA",
+              "areano" : "DY",
+              "unitno" : "0",
+              "weldno" : "M1",
+              "speciality" : "GDHK",
+              "materialtype" : "CS",
+              "workpoint" : 0.325,
+              "qualitynum" : 1.0,
+              "worktime" : 1.0,
+              "consteam" : "26",
+              "plandate" : "2015-05-21至2015-05-23",
+              "consdate" : 1426348800000,
+              "isend" : 1,
+              "consendman" : "27",
+              "welder" : "xxx",
+              "enddate" : 1432477365000,
+              "qcsign" : 0,
+              "qcman" : null,
+              "qcdate" : null,
+              "remark" : null,
+              "createdOn" : 1431826745000,
+              "createdBy" : "admin",
+              "updatedOn" : 1431851684000,
+              "updatedBy" : "zhangxu"
+            }
+          },
+          "parent" : null
+        }
+      }
+    ],
+    "currentPage" : 1
+  }
+}
+  Error codes
+
+  Sample
+GET method:
+http://www.refiny.com/easycms-website/hdxt/api/baseservice/witness/myevent?loginUserId=123&pagesize=10&pagenum=1
+
+
+还有一个
+GET http://www.refiny.com/easycms-website/hdxt/api/baseservice/construction/endman
+获取分派到组长由于技术阻碍未能完成。同时也会影响到几个获取列表的API。
+
+
+
+ Push notification(推送接口）
+Test URL: 
+http://www.xxx.com/workflow/api/hdxt/push_assign_notification/action
+Live URL: 
+  Introduction
+把分配计划推送给班组负责人或者工作组组长
+  Inputs
+
+
+  Processing
+  Outputs
+	<push-action>		
+			<Receiver>[Receiver]</Receiver>    
+			<context>[context]</context>   	   
+	</push-action>
+  Error codes
+
+
+  Sample
+http://www.xxx.com/workflow/api/hdxt/push_assign_notification/action?transId=12345&consteam=管道李和平班&weldno=M10.
+
+
+
+ Create issue 
+
+Test URL: 
+http://www.xxx.com/workflow/api/hdxt/problem/add
+POST
+Live URL: 
+  Introduction
+  Inputs
+
+  Processing
+  Outputs
+ {"code":"1000","message":"success","responseResult":{"id":"50","worstepid":"437","stepno":1,"stepname":"坡口加工","describe":"****","questionname":"****","isOk":"1","level":"1","remark":null,"solvemethod":"***","confirm":null,"methodmanid":"89","solvedate":"","concerman":"","currentsolver":null,"createdBy":"8","file":[{"path":"_201505142303341431615814737.jpg","fileName":"7c43a8a14e0fb07e7e3e6f82"},{"path":"_201505142303341431615814832.jpg","fileName":"2322_206226_393083"},{"path":"_201505142303341431615814922.jpg","fileName":"2322_206233_863438"}]}}
+
+  Error codes
+
+
+ Upload Issue files
+
+Test URL: 
+http://www.xxx.com/workflow/api/hdxt/problem/upload
+POST
+Live URL: 
+  Introduction
+  Inputs
+
+  Processing
+  Outputs
+{"code":"1000","message":"success","responseResult":{}}
+  Error codes
+
+
+
+  Sample
+http://www.xxx.com/workflow/api/hdxt/push_assign_notification/action?transId=12345&loginID=12121
+
+
+ Handle issue 
+
+Test URL: 
+http://www.xxx.com/wworkflo/api/hdxt/problem/handle
+POST
+Live URL: 
+  Introduction
+  Inputs
+
+  Processing
+  Outputs
+{"code":"1000","message":"success","responseResult":{"id":"50","worstepid":"437","stepno":1,"stepname":"坡口加工","describe":"****","questionname":"****","isOk":"1","level":"1","remark":null,"solvemethod":"***","confirm":null,"methodmanid":"89","solvedate":"","concerman":"","currentsolver":null,"createdBy":"8","file":[{"path":"_201505142303341431615814737.jpg","fileName":"7c43a8a14e0fb07e7e3e6f82"},{"path":"_201505142303341431615814832.jpg","fileName":"2322_206226_393083"},{"path":"_201505142303341431615814922.jpg","fileName":"2322_206233_863438"}]}}
+
+  Error codes
+
+
+
+  Sample
+http://www.xxx.com/workflow/api/hdxt/push_assign_notification/action?transId=12345&loginID=12121
+
+
+
+ Confirm issue 
+
+Test URL: 
+http://www.xxx.com/workflow/api/hdxt/confrim
+POST
+Live URL: 
+  Introduction
+  Inputs
+
+  Processing
+  Outputs
+{"code":"1000","message":"success","responseResult":{"id":"50","worstepid":"437","stepno":1,"stepname":"坡口加工","describe":"****","questionname":"****","isOk":"1","level":"1","remark":null,"solvemethod":"***","confirm":null,"methodmanid":"89","solvedate":"","concerman":"","currentsolver":null,"createdBy":"8","file":[{"path":"_201505142303341431615814737.jpg","fileName":"7c43a8a14e0fb07e7e3e6f82"},{"path":"_201505142303341431615814832.jpg","fileName":"2322_206226_393083"},{"path":"_201505142303341431615814922.jpg","fileName":"2322_206233_863438"}]}}
+
+  Error codes
+
+
+
+  Sample
+http://www.xxx.com/workflow/api/hdxt/confirmed_issue/action?transId=12345&loginID=12121
+
+
+
+ get issues by status
+
+Test URL: 
+http://www.xxx.com/workflow/hdxt/api/problem
+GET
+Live URL: 
+  Introduction
+  Inputs
+
+  Processing
+  Outputs    
+{"code":"1000","message":"success","responseResult":[{"id":"61","worstepid":"437","stepno":null,"stepname":"坡口加工","describe":"erwhywt4","questionname":"swhwrht","isOk":"1","level":"0","solvemethod":"","confirm":null,"methodmanid":"89","solvedate":"2015-05-16 12:20:02","concerman":"89","currentsolver":"zhangxiaolin","createdBy":"8","file":[{"path":"_201505142149191431611359968.jpg","fileName":"7c43a8a14e0fb07e7e3e6f82"}]}]}
+
+  Error codes
+
+
+
+  Sample
+http://www.xxx.com/workflow/hdxt/api/problem?transId=12345&loginID=12121
+
+ get issue by id
+
+Test URL: 
+http://www.xxx.com/workflow/hdxt/api/problem/detail
+GET
+Live URL: 
+  Introduction
+  Inputs
+
+  Processing
+  Outputs    
+{"code":"1000","message":"success","responseResult":{"id":"50","worstepid":"437","stepno":1,"stepname":"坡口加工","describe":"这是正确的问题描述，\r\n求解决！","questionname":"这是正确的问题","isOk":"1","level":"1","remark":null,"solvemethod":"我已经解决问题了，你看看可行不！","confirm":null,"methodmanid":"89","solvedate":"","concerman":"","currentsolver":null,"createdBy":"8","file":[{"path":"_201505142303341431615814737.jpg","fileName":"7c43a8a14e0fb07e7e3e6f82"},{"path":"_201505142303341431615814832.jpg","fileName":"2322_206226_393083"},{"path":"_201505142303341431615814922.jpg","fileName":"2322_206233_863438"}]}}
+  Error codes
+
+
+
+  Sample
+http://www.xxx.com/workflow/api/hdxt/confirmed_issue/action?transId=12345&loginID=12121
+
