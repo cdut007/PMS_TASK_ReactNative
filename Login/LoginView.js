@@ -171,6 +171,7 @@ export default class LoginView extends Component {
                             登录
                     </Text>
                     </TouchableOpacity>
+
                     <Spinner
                         visible={this.state.loadingVisible}
                     />

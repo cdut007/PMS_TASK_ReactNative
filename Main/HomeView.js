@@ -10,6 +10,7 @@ import {
     TouchableHighlight,
     ScrollView
 } from 'react-native';
+
 import Dimensions from 'Dimensions';
 import NavBar from '../common/NavBar'
 import px2dp from '../common/util'
@@ -19,7 +20,7 @@ import MainFirstDetailView from './MainFirstDetailView';
 import Banner from 'react-native-banner';
 
 const REQUST_TASK_STATUS_URL = "/hdxt/api/statistics/task/status"
-
+import { Badge,Grid } from 'antd-mobile';
 
 const isIOS = Platform.OS == "ios"
 var width = Dimensions.get('window').width;
@@ -216,7 +217,7 @@ export default class HomeView extends Component {
                 <NavBar title="动态监管系统" />
                  <ScrollView
                  keyboardDismissMode='on-drag'
-                 keyboardShouldPersistTaps={false}
+                 keyboardShouldPersistTaps='always'
                  showsHorizontalScrollIndicator = {false}
                  showsVerticalScrollIndicator={false}
                  horizontal={false}
@@ -241,6 +242,7 @@ export default class HomeView extends Component {
             )
         }else{
             return (
+
                 <Banner
                     style={styles.topView}
                     banners={this.state.banners}
@@ -255,54 +257,31 @@ export default class HomeView extends Component {
     }
 
     renderToolsView() {
-        const w = width / 4, h = w
-        let renderSwipeView = (types, n) => {
-            return (
-                <View style={styles.toolsView}>
-                    {
-                        types.map((item, i) => {
-                            //format title
-                            var count = '0'
-                            var countText = (<Text />)
-                            let taskType = typeSegArr[this.state.selectedTypeIndex]
-                            let task = taskStatus[taskType]
-                            if (task) {
-                                task.result.map((taskItem, i) => {
-                                    if (taskItem.type == item.type) {
-                                        count = taskItem.result
-                                        return
-                                    }
-                                })
-                            }
-                            if (count != '0') {
-                                countText = (
-                                    <Text style={{ fontSize: px2dp(12), color: "red" }}>
-                                        {count}
-                                    <Text style={{ fontSize: px2dp(12), color: "#666" }}>道</Text>
-                                    </Text>
-                                )}
+        return(
+            <Grid data={toolsData}
+            columnNum={4}
+             hasLine={false}
+             renderItem={item => (
 
-                            let render = (
-                                <View style={[{ width: w, height: h }, styles.toolsItem]}>
-                                    <Image source={item.image} style={{ marginBottom: 10, width: 48, height: 48 }} resizeMode={Image.resizeMode.contain} />
-                                    <Text style={{ fontSize: px2dp(12), color: "#666" }}>{item.title}{countText}</Text>
-                                </View>
-                            )
-                            return (
-                                isIOS ? (
-                                    <TouchableHighlight style={{ width: w, height: h }} key={i} onPress={() => { this.onToolsItemClick(item.index) }}>{render}</TouchableHighlight>
-                                ) : (
-                                        <TouchableNativeFeedback style={{ width: w, height: h }} key={i} onPress={() => { this.onToolsItemClick(item.index) }}>{render}</TouchableNativeFeedback>
-                                    )
-                            )
-                        })
-                    }
-                </View>
-            )
-        }
-        return (
-            renderSwipeView(toolsData)
+                 //format title
+                 <TouchableHighlight style={{ alignSelf:'stretch',flex:1 }} key={item.index} onPress={() => { this.onToolsItemClick(item.index) }}>
+                 <View style={[{ alignSelf:'stretch',flex:1 }, styles.toolsItem]}>
+
+                     <Badge dot>
+                     <Image source={item.image} style={{ marginBottom: 10, width: 48, height: 48 }} resizeMode={Image.resizeMode.contain} />
+                     </Badge>
+
+                     <Text style={{ fontSize: px2dp(12), color: "#666" }}>{item.title}</Text>
+                 </View>
+                 </TouchableHighlight>
+
+
+             )}
+
+            />
         )
+
+
     }
 }
 
