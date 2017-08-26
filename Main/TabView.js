@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 
-import MainFirstView from './MainFirstView';
+import HomeView from './HomeView';
 import MeView from './MeView';
 import TaskConfirmView from './TaskConfirmView';
 import PlanView from './PlanView';
@@ -62,7 +62,7 @@ export default class TabView extends Component
                     badgeText=""
                     selectedTitleStyle={styles.tabBarTintColor}
                     onPress={() => this.setState({ selectedTab: 'tab1' })}>
-                    {<MainFirstView {...this.props}/>}
+                    {<HomeView {...this.props}/>}
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'tab2'}

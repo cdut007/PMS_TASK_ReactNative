@@ -55,7 +55,7 @@ export default class MainView extends Component {
             return(<View/>)
         }
 
-        if (this.state.hasLogin)
+        if (!this.state.hasLogin)
         {
             return (
                 <Navigator
