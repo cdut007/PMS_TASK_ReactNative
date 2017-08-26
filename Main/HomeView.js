@@ -259,6 +259,7 @@ export default class HomeView extends Component {
     renderToolsView() {
         return(
             <Grid data={toolsData}
+            style={[{ marginBottom:10,marginTop:10 }]}
             columnNum={4}
              hasLine={false}
              renderItem={item => (

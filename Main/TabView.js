@@ -12,8 +12,7 @@ import {
 
 import HomeView from './HomeView';
 import MeView from './MeView';
-import TaskConfirmView from './TaskConfirmView';
-import PlanView from './PlanView';
+import MeetingView from './MeetingView';
 import Navigation from '../common/Navigation';
 import TabNavigator from 'react-native-tab-navigator';
 
@@ -66,31 +65,21 @@ export default class TabView extends Component
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'tab2'}
-                    title="计划分配"
+                    title="会议"
                     renderIcon={() => <Image style={{width:24,height:24,}} source={require('../images/jhfph.png')} />}
                     renderSelectedIcon={() => <Image style={{width:24,height:24,}} source={require('../images/jhfpl.png')} />}
                     selectedTitleStyle={styles.tabBarTintColor}
                     onPress={() => this.setState({ selectedTab: 'tab2' })}>
-                    {<PlanView {...this.props}/>}
+                    {<MeetingView {...this.props}/>}
                 </TabNavigator.Item>
+
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'tab3'}
-                    title="施工确认"
-                    renderIcon={() => <Image
-                        style={{width:24,height:24,}}
-                         source={require('../images/sgqrh.png')} />}
-                    renderSelectedIcon={() => <Image style={{width:24,height:24,}} source={require('../images/sgqrl.png')} />}
-                    selectedTitleStyle={styles.tabBarTintColor}
-                    onPress={() => this.setState({ selectedTab: 'tab3' })}>
-                    {<TaskConfirmView {...this.props}/>}
-                </TabNavigator.Item>
-                <TabNavigator.Item
-                    selected={this.state.selectedTab === 'tab4'}
                     title="我的"
                     renderIcon={() => <Image style={{width:24,height:24,}} source={require('../images/me.png')} />}
                     renderSelectedIcon={() => <Image style={{width:24,height:24,}} source={require('../images/meh.png')} />}
                     selectedTitleStyle={styles.tabBarTintColor}
-                    onPress={() => this.setState({ selectedTab: 'tab4' })}>
+                    onPress={() => this.setState({ selectedTab: 'tab3' })}>
                     {<MeView {...this.props}/>}
                 </TabNavigator.Item>
 
