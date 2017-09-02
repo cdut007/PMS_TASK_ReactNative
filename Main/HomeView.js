@@ -19,7 +19,6 @@ import HttpRequest from '../HttpRequest/HttpRequest'
 import MainFirstDetailView from './MainFirstDetailView';
 import Banner from 'react-native-banner';
 
-const REQUST_TASK_STATUS_URL = "/hdxt/api/statistics/task/status"
 import { Badge,Grid } from 'antd-mobile';
 
 const isIOS = Platform.OS == "ios"
@@ -31,52 +30,52 @@ var tomorrow = new Date()
 tomorrow.setTime(tomorrow.getTime() + 24 * 60 * 60 * 1000)
 
 
-var toolsData = [
+var moduleData = [
     {
         'index': 0,
         'title': '管道计划',
-        "type": "4",
+        "type": "GDJH",
         'image': require('../images/icon_plan.png')
     },
     {
         'index': 1,
         'title': '通风计划',
-        "type": "2",
+        "type": "TFJH",
         'image': require('../images/icon_finish.png')
     },
     {
         'index': 2,
         'title': '机械计划',
-        "type": "3",
+        "type": "JXJH",
         'image': require('../images/icon_unfinish.png')
     },
     {
         'index': 3,
         'title': '电气计划',
-        "type": "1",
+        "type": "DQJH",
         'image': require('../images/icon_task.png')
     },
     {
         'index': 4,
         'title': '仪表计划',
-        "type": "4",
+        "type": "YBJH",
         'image': require('../images/icon_deal.png')
     },
     {
         'index': 5,
         'title': '主系统',
-        "type": "5",
+        "type": "ZXT",
         'image': require('../images/icon_deal.png')
     },
     {
         'index': 6,
         'title': '保温计划',
-        "type": "6",
+        "type": "BWJH",
         'image': require('../images/icon_deal.png')
     }
 ]
 
-var taskStatus = {}
+var moduleType = {}
 
 var daySegArr = ['' + yesterday.getDate() + '日', '今日', '' + tomorrow.getDate() + '日', '周', '月', '年']
 let typeSegArr = ['焊口', '支架']
@@ -134,19 +133,19 @@ export default class HomeView extends Component {
 
     componentDidMount() {
         setTimeout(() => {
-            this.getTaskStatus(this.state.selectedDayIndex)
+            this.getModuleInfo()
         }, 1000 * 0.2);
 
     }
 
 
     onBannerSuccess(response){
-        this.state.banners = response.data.images;
-        console.log('BannerSuccess:' + JSON.stringify(response.data));
+        this.state.banners = response.responseResult;
+        console.log('BannerSuccess:' + JSON.stringify(response.responseResult));
         this.setState({banners:this.state.banners});
     }
 
-    getTaskStatus(index) {
+    getModuleInfo() {
         var date = new Date()
         var now = dateformat(date, 'yyyy-mm-dd')
         var category = dayCateArr[index]
@@ -155,7 +154,7 @@ export default class HomeView extends Component {
                 'taskDate': now,
                 'category': category
             }
-        HttpRequest.get(REQUST_TASK_STATUS_URL, paramBody, this.onGetTaskSuccess.bind(this),
+        HttpRequest.get('/module', paramBody, this.onGetModuleSuccess.bind(this),
             (e) => {
                 try {
                     alert(e)
@@ -166,11 +165,11 @@ export default class HomeView extends Component {
             })
     }
 
-    onGetTaskSuccess(response) {
-        console.log('onGetTaskSuccess:' + JSON.stringify(response))
-        response.responseResult.retuls.map((item, i) => {
+    onGetModuleSuccess(response) {
+        console.log('onGetModuleSuccess:' + JSON.stringify(response))
+        response.responseResult.map((item, i) => {
             if (item.type) {
-                taskStatus[item.type] = item
+                moduleType[item.type] = item
             }
         })
 
@@ -179,14 +178,14 @@ export default class HomeView extends Component {
         })
     }
 
-    onToolsItemClick(index) {
+    onModuleItemClick(index) {
         console.log('Did click item at:' + index)
             //
 
             this.props.navigator.push({
                 component: MainFirstDetailView,
                  props: {
-                     data:toolsData[index],
+                     data:moduleData[index],
                      type:this.state.selectedTypeIndex,
                      typeStr:typeSegArr[this.state.selectedTypeIndex],
                      category:dayCateArr[index],
@@ -201,7 +200,7 @@ export default class HomeView extends Component {
             selectedDayIndex: index
         })
 
-        this.getTaskStatus(index)
+        this.getModuleInfo(index)
     }
 
     onTypeIndexChange(index) {
@@ -257,14 +256,14 @@ export default class HomeView extends Component {
 
     renderToolsView() {
         return(
-            <Grid data={toolsData}
-            style={[{ marginBottom:10,marginTop:10 }]}
+            <Grid data={moduleData}
+            style={{ marginBottom:10,marginTop:10,paddingTop:20}}
             columnNum={4}
              hasLine={false}
              renderItem={item => (
 
                  //format title
-                 <TouchableHighlight style={{ alignSelf:'stretch',flex:1 }} key={item.index} onPress={() => { this.onToolsItemClick(item.index) }}>
+                 <TouchableHighlight style={{ alignSelf:'stretch',flex:1}} key={item.index} onPress={() => { this.onModuleItemClick(item.index) }}>
                  <View style={[{ alignSelf:'stretch',flex:1 }, styles.toolsItem]}>
 
                      <Badge dot>

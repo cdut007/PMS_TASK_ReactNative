@@ -68,7 +68,7 @@ export default class LoginView extends Component {
             alert('请输入用户名或密码')
         }
         else {
-            HttpRequest.post('/hdxt/api/core/authenticate', paramBody, this.onLoginSuccess.bind(this),
+            HttpRequest.post('/authenticate', paramBody, this.onLoginSuccess.bind(this),
                 (e) => {
                     this.setState({
                         loadingVisible: false

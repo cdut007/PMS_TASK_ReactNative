@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native';
 
-const apiAddr =  'http://39.108.165.171' //http://106.37.241.216:5555/easycms-website
+const apiAddr =  'http://39.108.165.171/hdxt/api' //http://106.37.241.216:5555/easycms-website
 var httpToken = ''
 var Global = require('../common/globals');
 
