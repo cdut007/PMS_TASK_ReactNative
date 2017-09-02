@@ -9,6 +9,7 @@ import {
     AsyncStorage,
     Image
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Dimensions from 'Dimensions';
 import Spinner from 'react-native-loading-spinner-overlay';
 import NavBar from '../common/NavBar'
@@ -17,6 +18,9 @@ var Global = require('../common/globals');
 import { Button } from 'antd-mobile';
 
 var width = Dimensions.get('window').width;
+
+var height = Dimensions.get('window').height;
+
 var index;
 export default class LoginView extends Component {
     constructor(props) {
@@ -53,7 +57,7 @@ export default class LoginView extends Component {
             loadingVisible: true
         });
         var paramBody = {
-                'LoginId': this.state.LoginId,
+                'username': this.state.LoginId,
                 'password': this.state.passWord,
                 'uuid': 'uc'
             }
@@ -64,13 +68,18 @@ export default class LoginView extends Component {
             alert('请输入用户名或密码')
         }
         else {
-            HttpRequest.get('/hdxt/api/core/authenticate', paramBody, this.onLoginSuccess.bind(this),
+            HttpRequest.post('/hdxt/api/core/authenticate', paramBody, this.onLoginSuccess.bind(this),
                 (e) => {
                     this.setState({
                         loadingVisible: false
                     });
                     try {
                         var errorInfo = JSON.parse(e);
+                    }
+                    catch(err)
+                    {
+                        console.log("error======"+err)
+                    }
                         if (errorInfo != null) {
                             if (errorInfo.code == -1002||
 							 errorInfo.code == -1001) {
@@ -82,11 +91,7 @@ export default class LoginView extends Component {
                         } else {
                             alert(e)
                         }
-                    }
-                    catch(err)
-                    {
-                        console.log(err)
-                    }
+
 
                     console.log('Login error:' + e)
                 })
@@ -144,27 +149,58 @@ export default class LoginView extends Component {
 
     render() {
         return (
+
             <View style={styles.rootcontainer}>
-                <NavBar title="登录" />
+            <Image style={{position:'absolute',left:0,top:0,resizeMode:'stretch', alignItems:'center',
+                            width:width,height:height,
+                  justifyContent:'center',
+                  flex:1}} source={require('../images/login_bj.jpg')}/>
+
                 <View style={styles.container}>
                     <Image source={require('../images/cni_logo.png')} style={styles.logo} />
+
+                    <View style={styles.LoginId}>
+                    <Image
+                    style={styles.style_image}
+                    source={require('../images/user_icon.png')}/>
                     <TextInput
-                        style={styles.LoginId}
+                       style={{alignSelf: 'stretch',
+                       fontSize: 18,flex:1,
+                       textAlign: 'left',}}
+                        underlineColorAndroid={'transparent'}
                         value={this.state.LoginId}
                          underlineColorAndroid='transparent'
                         editable={true}
-                        placeholder={'用户名'}
+                        placeholderTextColor='#a4b4c4'
+                        placeholder={'请输入用户名'}
                         onChangeText={(text) => this.setState({ LoginId: text })}>
                     </TextInput>
+                    </View>
+
+
+                    <View style={styles.passWord}>
+
+                    <Image
+                    style={styles.style_image}
+                    source={require('../images/password_icon.png')}/>
+
                     <TextInput
-                        style={styles.passWord}
+                        style={{alignSelf: 'stretch',
+                        fontSize: 18,flex:1,
+                        textAlign: 'left',}}
+                         underlineColorAndroid={'transparent'}
+                        placeholderTextColor='#a4b4c4'
                          underlineColorAndroid='transparent'
                         value={this.state.passWord}
                         editable={true}
                         secureTextEntry={true}
-                        placeholder={'密码'}
+                        placeholder={'请输入密码'}
                         onChangeText={(text) => this.setState({ passWord: text })}>
                     </TextInput>
+
+                    </View>
+
+
                     <TouchableOpacity onPress={this.onLoginPress.bind(this)}
                         style={styles.loginButton}>
                         <Text style={styles.loginText} >
@@ -175,7 +211,10 @@ export default class LoginView extends Component {
                     <Spinner
                         visible={this.state.loadingVisible}
                     />
+
                 </View>
+
+
             </View>
         )
     }
@@ -184,10 +223,11 @@ export default class LoginView extends Component {
 const styles = StyleSheet.create(
     {
         logo: {
-            marginTop: 20,
+            marginTop: 40,
             alignSelf: 'center',
-            height: 100,
-            width: 100,
+            height: 186,
+            width: 156,
+            marginBottom:20,
             resizeMode: Image.resizeMode.contain,
         },
         container:
@@ -205,50 +245,49 @@ const styles = StyleSheet.create(
             alignItems: 'center',
             backgroundColor: '#ebebeb',
         },
-
+        style_image:{
+           borderRadius:35,
+           height:50,
+           width:50,
+           alignSelf:'center',
+         },
         LoginId:
         {
+            flexDirection:'row',
             alignSelf: 'stretch',
-            fontSize: 16,
-            textAlign: 'left',
             margin: 10,
-            height: 40,
-            borderColor: 'gray',
+            height: 50,
+            borderColor: '#0755a6',
             borderWidth: 1,
-            borderRadius: 5,
+            borderRadius: 26,
             paddingLeft: 10,
             alignItems: 'center',
-            justifyContent: 'center',
         },
 
         passWord:
         {
+            flexDirection:'row',
             alignSelf: 'stretch',
-            textAlign: 'left',
-            color: '#333333',
-            marginLeft: 10,
-            marginRight: 10,
-            fontSize: 16,
-            height: 40,
-            borderColor: 'gray',
+            margin: 10,
+            height: 50,
+            borderColor: '#0755a6',
             borderWidth: 1,
-            borderRadius: 5,
+            borderRadius: 26,
             paddingLeft: 10,
             alignItems: 'center',
-            justifyContent: 'center',
         },
         loginText:
         {
             color: '#ffffff',
-            fontSize: 18,
+            fontSize: 24,
         },
         loginButton:
         {
-            marginTop: 30,
+            marginTop: 50,
             height: 50,
             width: width - 20,
-            backgroundColor: '#1a8eaf',
-            borderRadius: 5,
+            backgroundColor: '#0755a6',
+            borderRadius: 26,
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',

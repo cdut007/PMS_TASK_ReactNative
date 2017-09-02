@@ -214,7 +214,6 @@ export default class HomeView extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <NavBar title="动态监管系统" />
                  <ScrollView
                  keyboardDismissMode='on-drag'
                  keyboardShouldPersistTaps='always'

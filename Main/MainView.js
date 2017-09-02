@@ -55,7 +55,7 @@ export default class MainView extends Component {
             return(<View/>)
         }
 
-        if (!this.state.hasLogin)
+        if (this.state.hasLogin)
         {
             return (
                 <Navigator
@@ -68,7 +68,7 @@ export default class MainView extends Component {
               />
             )
         }
-        else {
+         else {
             return (
                 <Navigator
                 initialRoute={{component: WelcomeView, name: "WelcomePage", index: this.props.index}}
