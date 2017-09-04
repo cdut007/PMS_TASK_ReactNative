@@ -56,8 +56,8 @@ export default class TabView extends Component
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'tab1'}
                     title="首页"
-                    renderIcon={() => <Image style={{width:24,height:24,}} source={require('../images/home.png')} />}
-                    renderSelectedIcon={() => <Image style={{width:24,height:24,}} source={require('../images/homeg.png')} />}
+                    renderIcon={() => <Image style={{width:24,height:24,}} source={require('../images/home_icon.png')} />}
+                    renderSelectedIcon={() => <Image style={{width:24,height:24,}} source={require('../images/home_icon_click.png')} />}
                     badgeText=""
                     selectedTitleStyle={styles.tabBarTintColor}
                     onPress={() => this.setState({ selectedTab: 'tab1' })}>
@@ -66,8 +66,8 @@ export default class TabView extends Component
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'tab2'}
                     title="会议"
-                    renderIcon={() => <Image style={{width:24,height:24,}} source={require('../images/jhfph.png')} />}
-                    renderSelectedIcon={() => <Image style={{width:24,height:24,}} source={require('../images/jhfpl.png')} />}
+                    renderIcon={() => <Image style={{width:24,height:24,}} source={require('../images/meeting_icon.png')} />}
+                    renderSelectedIcon={() => <Image style={{width:24,height:24,}} source={require('../images/meeting_icon_click.png')} />}
                     selectedTitleStyle={styles.tabBarTintColor}
                     onPress={() => this.setState({ selectedTab: 'tab2' })}>
                     {<MeetingView {...this.props}/>}
@@ -76,8 +76,8 @@ export default class TabView extends Component
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'tab3'}
                     title="我的"
-                    renderIcon={() => <Image style={{width:24,height:24,}} source={require('../images/me.png')} />}
-                    renderSelectedIcon={() => <Image style={{width:24,height:24,}} source={require('../images/meh.png')} />}
+                    renderIcon={() => <Image style={{width:24,height:24,}} source={require('../images/me_icon.png')} />}
+                    renderSelectedIcon={() => <Image style={{width:24,height:24,}} source={require('../images/me_icon_click.png')} />}
                     selectedTitleStyle={styles.tabBarTintColor}
                     onPress={() => this.setState({ selectedTab: 'tab3' })}>
                     {<MeView {...this.props}/>}
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     },
     tabBarTintColor: {
 
-      color: '#00a629'
+      color: '#0755a6'
     },
 
 });

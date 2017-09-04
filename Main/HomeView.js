@@ -35,44 +35,73 @@ var moduleData = [
         'index': 0,
         'title': '管道计划',
         "type": "GDJH",
-        'image': require('../images/icon_plan.png')
+        'image': require('../images/gd_icon.png')
     },
     {
         'index': 1,
         'title': '通风计划',
         "type": "TFJH",
-        'image': require('../images/icon_finish.png')
+        'image': require('../images/tf_icon.png')
     },
     {
         'index': 2,
         'title': '机械计划',
         "type": "JXJH",
-        'image': require('../images/icon_unfinish.png')
+        'image': require('../images/jx_icon.png')
     },
     {
         'index': 3,
         'title': '电气计划',
         "type": "DQJH",
-        'image': require('../images/icon_task.png')
+        'image': require('../images/dq_icon.png')
     },
     {
         'index': 4,
         'title': '仪表计划',
         "type": "YBJH",
-        'image': require('../images/icon_deal.png')
+        'image': require('../images/yb_icon.png')
     },
     {
         'index': 5,
         'title': '主系统',
         "type": "ZXT",
-        'image': require('../images/icon_deal.png')
+        'image': require('../images/zxt_icon.png')
     },
     {
         'index': 6,
         'title': '保温计划',
         "type": "BWJH",
-        'image': require('../images/icon_deal.png')
+        'image': require('../images/bw_icon.png')
+    },
+    {
+        'index': 7,
+        'title': '调试计划',
+        "type": "TSJH",
+        'image': require('../images/ts_icon.png')
     }
+]
+
+
+var bottomModuleData = [
+    {
+        'index': 8,
+        'title': '文明施工',
+        "type": "WMSG",
+        'image': require('../images/construction_icon.png')
+    },
+    {
+        'index': 9,
+        'title': '质量管理',
+        "type": "ZLGL",
+        'image': require('../images/quality_icon.png')
+    },
+    {
+        'index': 10,
+        'title': '物质管理',
+        "type": "WZGL",
+        'image': require('../images/material_icon.png')
+    },
+
 ]
 
 var moduleType = {}
@@ -148,11 +177,8 @@ export default class HomeView extends Component {
     getModuleInfo() {
         var date = new Date()
         var now = dateformat(date, 'yyyy-mm-dd')
-        var category = dayCateArr[index]
 
         var paramBody = {
-                'taskDate': now,
-                'category': category
             }
         HttpRequest.get('/module', paramBody, this.onGetModuleSuccess.bind(this),
             (e) => {
@@ -224,6 +250,7 @@ export default class HomeView extends Component {
 
                 {this.renderTopView()}
                 {this.renderToolsView()}
+                {this.renderBottomModuleView()}
                  </ScrollView>
             </View>
         )
@@ -254,10 +281,40 @@ export default class HomeView extends Component {
         }
     }
 
+    renderBottomModuleView(){
+
+        return(
+            <View style={[{ marginBottom:10,marginTop:10,}]}>
+            <Grid data={bottomModuleData}
+            columnNum={3}
+             hasLine={false}
+             renderItem={item => (
+
+                 //format title
+                 <TouchableHighlight style={{ alignSelf:'stretch',flex:1}} key={item.index} onPress={() => { this.onModuleItemClick(item.index) }}>
+                 <View style={[{ alignSelf:'stretch',flex:1 }, styles.toolsItem]}>
+
+                     <Badge dot>
+                     <Image source={item.image} style={{ marginBottom: 10, width: 50, height: 50 }} resizeMode={Image.resizeMode.contain} />
+                     </Badge>
+
+                     <Text style={{ fontSize: px2dp(12), color: "#3b3b3b" }}>{item.title}</Text>
+                 </View>
+                 </TouchableHighlight>
+
+
+             )}
+
+            />
+            </View>
+        )
+
+    }
+
     renderToolsView() {
         return(
             <Grid data={moduleData}
-            style={{ marginBottom:10,marginTop:10,paddingTop:20}}
+            style={[{ marginBottom:10,marginTop:10,}]}
             columnNum={4}
              hasLine={false}
              renderItem={item => (
@@ -270,7 +327,7 @@ export default class HomeView extends Component {
                      <Image source={item.image} style={{ marginBottom: 10, width: 48, height: 48 }} resizeMode={Image.resizeMode.contain} />
                      </Badge>
 
-                     <Text style={{ fontSize: px2dp(12), color: "#666" }}>{item.title}</Text>
+                     <Text style={{ fontSize: px2dp(12), color: "#707070" }}>{item.title}</Text>
                  </View>
                  </TouchableHighlight>
 
@@ -290,7 +347,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#f2f2f2',
     },
     topView: {
         height: 150,

@@ -7,7 +7,8 @@ import {
     TouchableOpacity,
     Text,
     AsyncStorage,
-    Image
+    Image,
+    KeyboardAvoidingView
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Dimensions from 'Dimensions';
@@ -177,7 +178,6 @@ export default class LoginView extends Component {
                     </TextInput>
                     </View>
 
-
                     <View style={styles.passWord}>
 
                     <Image
@@ -198,8 +198,8 @@ export default class LoginView extends Component {
                         onChangeText={(text) => this.setState({ passWord: text })}>
                     </TextInput>
 
-                    </View>
 
+                    </View>
 
                     <TouchableOpacity onPress={this.onLoginPress.bind(this)}
                         style={styles.loginButton}>
@@ -207,6 +207,7 @@ export default class LoginView extends Component {
                             登录
                     </Text>
                     </TouchableOpacity>
+
 
                     <Spinner
                         visible={this.state.loadingVisible}
