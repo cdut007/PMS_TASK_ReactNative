@@ -18,8 +18,7 @@ import dateformat from 'dateformat'
 import HttpRequest from '../HttpRequest/HttpRequest'
 import MainFirstDetailView from './MainFirstDetailView';
 import Banner from 'react-native-banner';
-
-import { Badge,Grid } from 'antd-mobile';
+import { Badge,Grid,WhiteSpace } from 'antd-mobile';
 
 const isIOS = Platform.OS == "ios"
 var width = Dimensions.get('window').width;
@@ -104,7 +103,7 @@ var bottomModuleData = [
 
 ]
 
-var moduleType = {}
+var moduleType = []
 
 var daySegArr = ['' + yesterday.getDate() + '日', '今日', '' + tomorrow.getDate() + '日', '周', '月', '年']
 let typeSegArr = ['焊口', '支架']
@@ -251,8 +250,8 @@ export default class HomeView extends Component {
                  horizontal={false}
                  style={{width:width}}
                  >
-
                 {this.renderTopView()}
+                <WhiteSpace size="sm"  style={{backgroundColor:'#ffffff'}}/>
                 {this.renderToolsView()}
                 {this.renderBottomModuleView()}
                  </ScrollView>
@@ -300,9 +299,7 @@ export default class HomeView extends Component {
                  <TouchableHighlight style={{ alignSelf:'stretch',flex:1}} key={item.index} onPress={() => { this.onModuleItemClick(item.index,true) }}>
                  <View style={[{ alignSelf:'stretch',flex:1 }, styles.toolsItem]}>
 
-                     <Badge dot>
-                     <Image source={item.image} style={{ marginBottom: 10, width: 50, height: 50 }} resizeMode={Image.resizeMode.contain} />
-                     </Badge>
+                     {this.renderDot(item)}
 
                      <Text style={{ fontSize: px2dp(12), color: "#3b3b3b" }}>{item.title}</Text>
                  </View>
@@ -317,6 +314,21 @@ export default class HomeView extends Component {
 
     }
 
+
+    renderDot(item){
+    
+        var data = moduleType[item.type]
+        if (data && data.alert) {
+            return(<Badge dot>
+            <Image source={item.image} style={{ marginBottom: 10, width: 48, height: 48 }} resizeMode={Image.resizeMode.contain} />
+            </Badge>)
+        }else{
+
+            return( <Image source={item.image} style={{ marginBottom: 10, width: 48, height: 48 }} resizeMode={Image.resizeMode.contain} />
+            )
+        }
+    }
+
     renderToolsView() {
         return(
             <Grid data={moduleData}
@@ -329,9 +341,7 @@ export default class HomeView extends Component {
                  <TouchableHighlight style={{ alignSelf:'stretch',flex:1}} key={item.index} onPress={() => { this.onModuleItemClick(item.index,false) }}>
                  <View style={[{ alignSelf:'stretch',flex:1 }, styles.toolsItem]}>
 
-                     <Badge dot>
-                     <Image source={item.image} style={{ marginBottom: 10, width: 48, height: 48 }} resizeMode={Image.resizeMode.contain} />
-                     </Badge>
+                     {this.renderDot(item)}
 
                      <Text style={{ fontSize: px2dp(12), color: "#707070" }}>{item.title}</Text>
                  </View>
