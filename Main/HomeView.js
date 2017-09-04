@@ -84,19 +84,19 @@ var moduleData = [
 
 var bottomModuleData = [
     {
-        'index': 8,
+        'index': 0,
         'title': '文明施工',
         "type": "WMSG",
         'image': require('../images/construction_icon.png')
     },
     {
-        'index': 9,
+        'index': 1,
         'title': '质量管理',
         "type": "ZLGL",
         'image': require('../images/quality_icon.png')
     },
     {
-        'index': 10,
+        'index': 2,
         'title': '物质管理',
         "type": "WZGL",
         'image': require('../images/material_icon.png')
@@ -204,14 +204,18 @@ export default class HomeView extends Component {
         })
     }
 
-    onModuleItemClick(index) {
+    onModuleItemClick(index,bottom) {
         console.log('Did click item at:' + index)
             //
+            var data = moduleData[index];
+            if (bottom) {
+                data = bottomModuleData[index];
+            }
 
             this.props.navigator.push({
                 component: MainFirstDetailView,
                  props: {
-                     data:moduleData[index],
+                     data:data,
                      type:this.state.selectedTypeIndex,
                      typeStr:typeSegArr[this.state.selectedTypeIndex],
                      category:dayCateArr[index],
@@ -262,11 +266,13 @@ export default class HomeView extends Component {
         console.log("this.state.banners="+banners)
         if (this.state.banners.length == 0) {
             return (
-                <Image source={require('../images/logo.png')} style={styles.topView} resizeMode={Image.resizeMode.contain} />
+                <Image source={require('../images/banner_img.png')} style={styles.topView} resizeMode={Image.resizeMode.contain} />
 
             )
         }else{
             return (
+                <View style={styles.rootcontainer}>
+                <Image style={[{position:'absolute',left:0,top:0,resizeMode:'stretch', alignItems:'center',},styles.topView]} source={require('../images/banner_img.png')}/>
 
                 <Banner
                     style={styles.topView}
@@ -275,7 +281,7 @@ export default class HomeView extends Component {
                     onMomentumScrollEnd={this.bannerOnMomentumScrollEnd.bind(this)}
                     intent={this.bannerClickListener.bind(this)}
                 />
-
+                </View>
 
             )
         }
@@ -291,7 +297,7 @@ export default class HomeView extends Component {
              renderItem={item => (
 
                  //format title
-                 <TouchableHighlight style={{ alignSelf:'stretch',flex:1}} key={item.index} onPress={() => { this.onModuleItemClick(item.index) }}>
+                 <TouchableHighlight style={{ alignSelf:'stretch',flex:1}} key={item.index} onPress={() => { this.onModuleItemClick(item.index,true) }}>
                  <View style={[{ alignSelf:'stretch',flex:1 }, styles.toolsItem]}>
 
                      <Badge dot>
@@ -320,7 +326,7 @@ export default class HomeView extends Component {
              renderItem={item => (
 
                  //format title
-                 <TouchableHighlight style={{ alignSelf:'stretch',flex:1}} key={item.index} onPress={() => { this.onModuleItemClick(item.index) }}>
+                 <TouchableHighlight style={{ alignSelf:'stretch',flex:1}} key={item.index} onPress={() => { this.onModuleItemClick(item.index,false) }}>
                  <View style={[{ alignSelf:'stretch',flex:1 }, styles.toolsItem]}>
 
                      <Badge dot>
