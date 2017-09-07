@@ -16,7 +16,7 @@ import NavBar from '../common/NavBar'
 import px2dp from '../common/util'
 import dateformat from 'dateformat'
 import HttpRequest from '../HttpRequest/HttpRequest'
-import MainFirstDetailView from './MainFirstDetailView';
+import ModuleTabView from './ModuleTabView';
 import Banner from 'react-native-banner';
 import { Badge,Grid,WhiteSpace } from 'antd-mobile';
 
@@ -32,21 +32,21 @@ tomorrow.setTime(tomorrow.getTime() + 24 * 60 * 60 * 1000)
 var moduleData = [
     {
         'index': 0,
-        'title': '管道计划',
-        "type": "GDJH",
-        'image': require('../images/gd_icon.png')
-    },
-    {
-        'index': 1,
-        'title': '通风计划',
-        "type": "TFJH",
-        'image': require('../images/tf_icon.png')
-    },
-    {
-        'index': 2,
         'title': '机械计划',
         "type": "JXJH",
         'image': require('../images/jx_icon.png')
+    },
+    {
+        'index': 1,
+        'title': '主系统',
+        "type": "ZXT",
+        'image': require('../images/zxt_icon.png')
+    },
+    {
+        'index': 2,
+        'title': '管道计划',
+        "type": "GDJH",
+        'image': require('../images/gd_icon.png')
     },
     {
         'index': 3,
@@ -54,6 +54,7 @@ var moduleData = [
         "type": "DQJH",
         'image': require('../images/dq_icon.png')
     },
+
     {
         'index': 4,
         'title': '仪表计划',
@@ -62,10 +63,11 @@ var moduleData = [
     },
     {
         'index': 5,
-        'title': '主系统',
-        "type": "ZXT",
-        'image': require('../images/zxt_icon.png')
+        'title': '调试计划',
+        "type": "TSJH",
+        'image': require('../images/ts_icon.png')
     },
+
     {
         'index': 6,
         'title': '保温计划',
@@ -74,9 +76,9 @@ var moduleData = [
     },
     {
         'index': 7,
-        'title': '调试计划',
-        "type": "TSJH",
-        'image': require('../images/ts_icon.png')
+        'title': '通风计划',
+        "type": "TFJH",
+        'image': require('../images/tf_icon.png')
     }
 ]
 
@@ -212,7 +214,7 @@ export default class HomeView extends Component {
             }
 
             this.props.navigator.push({
-                component: MainFirstDetailView,
+                component: ModuleTabView,
                  props: {
                      data:data,
                      type:this.state.selectedTypeIndex,
@@ -316,7 +318,7 @@ export default class HomeView extends Component {
 
 
     renderDot(item){
-    
+
         var data = moduleType[item.type]
         if (data && data.alert) {
             return(<Badge dot>

@@ -30,20 +30,20 @@ export default class NavBar extends Component{
         rightPress: PropTypes.func,
         style: PropTypes.object
     }
-    static topbarHeight = (Platform.OS === 'ios' ? 64 : 42)
+    static topbarHeight = (Platform.OS === 'ios' ? 64 : 44)
     renderBtn(pos){
       let render = (obj) => {
         const { name, onPress } = obj
         if(Platform.OS === 'android'){
           return (
             <TouchableNativeFeedback onPress={onPress} style={styles.btn}>
-              <Image source={name} style={{width: px2dp(26), height: px2dp(26),resizeMode:'contain'}}/>
+              <Image source={name} style={{width: px2dp(44), height: px2dp(44),resizeMode:'contain'}}/>
             </TouchableNativeFeedback>
           )
         }else{
           return (
             <TouchableOpacity onPress={onPress} style={styles.btn}>
-              <Image source={name} style={{width: px2dp(26), height: px2dp(26),resizeMode:'contain'}}/>
+              <Image source={name} style={{width: px2dp(44), height: px2dp(44),resizeMode:'contain'}}/>
             </TouchableOpacity>
           )
         }
@@ -70,11 +70,16 @@ export default class NavBar extends Component{
     }
     render(){
         return(
-            <View style={[styles.topbar, this.props.style]}>
+            <View style={{color:"#d6d6d6",alignSelf:'stretch',height: NavBar.topbarHeight + 0.5,}}>
+                <View style={[styles.topbar, this.props.style]}>
                 {this.renderBtn("left")}
                 <Animated.Text numberOfLines={1} style={[styles.title, this.props.titleStyle]}>{this.props.title}</Animated.Text>
                 {this.renderBtn("right")}
+                </View>
+                <View style={{backgroundColor:"#d6d6d6",height:0.5,alignSelf:'stretch',flex:1}}>
+                </View>
             </View>
+
         )
     }
 }
@@ -83,23 +88,21 @@ const styles = StyleSheet.create({
     topbar: {
         alignSelf: 'stretch',
         height: NavBar.topbarHeight,
-        backgroundColor: "#00a629",
+        backgroundColor: "#ffffff",
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingTop: (Platform.OS === 'ios') ? 20 : 0,
-        paddingHorizontal: px2dp(10)
     },
     btn: {
-      width: 40,
-      height: 40,
+      width: 44,
+      height: 44,
       justifyContent: 'center',
       alignItems: 'center'
     },
     title:{
-        color: "#fff",
-        fontWeight: "bold",
-        fontSize: px2dp(16),
-        marginLeft: px2dp(5),
+        color: "#1b1b1b",
+        fontSize: 18,
+        marginLeft: 5,
     }
 });
