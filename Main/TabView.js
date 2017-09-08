@@ -5,7 +5,6 @@ import {
     Text,
     View,
     Image,
-    Navigator,
     BackAndroid
 } from 'react-native';
 

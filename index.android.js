@@ -6,21 +6,19 @@
 
 import React, { Component } from 'react';
 import {
-    AppRegistry,
-    StyleSheet,
-    Text,
-    View
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View
 } from 'react-native';
 
 import MainView from './Main/MainView'
 
-export default class TaskrackerPMS extends Component {
-
-
+export default class hd_app extends Component {
     render() {
-        return (<MainView index={this} />);
-    }
-
+            return (<MainView index={this} />);
+        }
 }
 
-AppRegistry.registerComponent('tasktrackerpms', () => TaskrackerPMS);
+
+AppRegistry.registerComponent('hd_app', () => hd_app);

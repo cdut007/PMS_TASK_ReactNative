@@ -5,12 +5,12 @@ import {
     Text,
     View,
     Image,
-    Navigator,
     AsyncStorage
 } from 'react-native';
 
+import {Navigator}
+ from 'react-native-deprecated-custom-components'
 
-import MainFirstView from './MainFirstView';
 import Navigation from '../common/Navigation';
 import TabNavigator from 'react-native-tab-navigator';
 import TabView from './TabView'

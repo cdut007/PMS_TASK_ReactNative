@@ -1,0 +1,38 @@
+{
+  "name": "hd",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "dateformat": "^2.0.0",
+    "react": "~15.4.2",
+    "react-dom": "~15.4.2",
+    "react-native": "0.42.0",
+    "react-native-banner": "^0.1.0",
+    "react-native-checkbox": "^1.1.0",
+    "react-native-grid-component": "^1.0.4",
+    "react-native-image-picker": "^0.26.3",
+    "react-native-keyboard-aware-scroll-view": "^0.3.0",
+    "react-native-loading-spinner-overlay": "^0.4.1",
+    "react-native-modal-datetime-picker": "^4.2.1",
+    "react-native-modal-dropdown": "^0.4.1",
+    "react-native-scrollable-tab-view": "^0.6.7",
+    "react-native-segmented-control-tab": "^3.0.1",
+    "react-native-smart-badge": "^1.1.1",
+    "react-native-tab-navigator": "^0.3.3",
+    "react-native-vector-icons": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-jest": "19.0.0",
+    "babel-plugin-import": "^1.4.0",
+    "babel-preset-react-native": "1.9.1",
+    "jest": "19.0.2",
+    "react-test-renderer": "~15.4.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

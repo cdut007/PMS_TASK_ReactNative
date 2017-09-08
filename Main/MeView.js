@@ -16,9 +16,6 @@ import px2dp from '../common/util';
 import HttpRequest from '../HttpRequest/HttpRequest'
 import CircleImage from '../common/CircleImage';
 import SettingView from './SettingView';
-import MyIssueView from '../Mine/MyIssueView';
-import MyWitnessView from '../Mine/MyWitnessView';
-import MyPlanView from '../Mine/MyPlanView'
 
 const isIOS = Platform.OS == "ios"
 var width = Dimensions.get('window').width;
@@ -56,19 +53,13 @@ export default class MeView extends Component {
         })
     }
     onMineIssuePress(){
-        this.props.navigator.push({
-            component: MyIssueView,
-        })
+
     }
     onMinePlanPress(){
-        this.props.navigator.push({
-            component: MyPlanView,
-        })
+
     }
     onMineWitnessPress(){
-        this.props.navigator.push({
-            component: MyWitnessView,
-        })
+
 
     }
 

@@ -5,7 +5,6 @@ import {
     Text,
     View,
     Image,
-    Navigator,
     BackAndroid
 } from 'react-native';
 
@@ -51,7 +50,7 @@ export default class ModuleTabView extends Component
 
     render()
     {
-        
+
         return (
             <TabNavigator>
                 <TabNavigator.Item
