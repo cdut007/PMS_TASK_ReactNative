@@ -18,11 +18,14 @@ import CircleLabelHeadView from '../common/CircleLabelHeadView';
 import px2dp from '../common/util'
 import SearchBar from '../common/SearchBar';
 import dateformat from 'dateformat'
-import PlanListView from './PlanListView';
+import SingleWorkRollDetailView from './SingleWorkRollDetailView';
 
 const isIOS = Platform.OS == "ios"
 var width = Dimensions.get('window').width;
 var pagesize = 10;
+
+import   ScrollableTabView  from 'react-native-scrollable-tab-view';
+
 
 var resultsCache = {
   dataForQuery: {},
@@ -31,7 +34,9 @@ var resultsCache = {
 };
 var LOADING = {};
 
-export default class PlanStatisticsSubView extends Component {
+
+
+export default class PlanListView extends Component {
     constructor(props) {
         super(props)
         var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -57,18 +62,31 @@ export default class PlanStatisticsSubView extends Component {
 
     }
 
+    callback(key) {
+          console.log('onChange', key);
+        }
+
+    handleTabClick(key) {
+          console.log('onTabClick', key);
+        }
+
     componentDidMount() {
 
         //this.executePlanRequest();
         this.setState({
             dataSource: this.state.dataSource.cloneWithRows(
-                [{name:'刘想',class:'一组组长','total':'123','undelivery':'11','work':'23','finish':'22','pause':'23'},
-            {name:'刘想',class:'一组组长','total':'123','undelivery':'11','work':'23','finish':'22','pause':'23'},
-        {name:'刘想',class:'一组组长','total':'123','undelivery':'11','work':'23','finish':'22','pause':'23'},
-    {name:'刘想',class:'一组组长','total':'123','undelivery':'11','work':'23','finish':'22','pause':'23'},
-    {name:'刘想',class:'一组组长','total':'123','undelivery':'11','work':'23','finish':'22','pause':'23'},
-    {name:'刘想',class:'一组组长','total':'123','undelivery':'11','work':'23','finish':'22','pause':'23'},
-    {name:'刘想',class:'一组组长','total':'123','undelivery':'11','work':'23','finish':'22','pause':'23'}]),
+                [{date:'2017/8/13',task_no:'2CAM0038-2121.4','classify':'A1','task_tyle':'预制','task_item_no':'TM01-2017-08-002'},
+                {date:'2017/8/13',task_no:'2CAM0038-2121.4','classify':'A1','task_tyle':'预制','task_item_no':'TM01-2017-08-002'},
+                {date:'2017/8/13',task_no:'2CAM0038-2121.4','classify':'A1','task_tyle':'预制','task_item_no':'TM01-2017-08-002'},
+                {date:'2017/8/13',task_no:'2CAM0038-2121.4','classify':'A1','task_tyle':'预制','task_item_no':'TM01-2017-08-002'},
+                {date:'2017/8/13',task_no:'2CAM0038-2121.4','classify':'A1','task_tyle':'预制','task_item_no':'TM01-2017-08-002'},
+                {date:'2017/8/13',task_no:'2CAM0038-2121.4','classify':'A1','task_tyle':'预制','task_item_no':'TM01-2017-08-002'},
+                {date:'2017/8/13',task_no:'2CAM0038-2121.4','classify':'A1','task_tyle':'预制','task_item_no':'TM01-2017-08-002'},
+                {date:'2017/8/13',task_no:'2CAM0038-2121.4','classify':'A1','task_tyle':'预制','task_item_no':'TM01-2017-08-002'},
+                {date:'2017/8/13',task_no:'2CAM0038-2121.4','classify':'A1','task_tyle':'预制','task_item_no':'TM01-2017-08-002'},
+                {date:'2017/8/13',task_no:'2CAM0038-2121.4','classify':'A1','task_tyle':'预制','task_item_no':'TM01-2017-08-002'},
+                {date:'2017/8/13',task_no:'2CAM0038-2121.4','classify':'A1','task_tyle':'预制','task_item_no':'TM01-2017-08-002'},
+            ]),
             isLoading: false,
         });
     }
@@ -99,7 +117,7 @@ export default class PlanStatisticsSubView extends Component {
 
     onItemPress(itemData){
         this.props.navigator.push({
-            component: PlanListView,
+            component: SingleWorkRollDetailView,
              props: {
                  data:itemData,
                 }
@@ -194,6 +212,22 @@ export default class PlanStatisticsSubView extends Component {
                 })
     }
 
+    rendTabs(){
+        return( <ScrollableTabView
+            tabBarUnderlineStyle={{backgroundColor: '#0755a6'}}
+               tabBarBackgroundColor='#FFFFFF'
+               tabBarActiveTextColor='#0755a6'
+               tabBarInactiveTextColor='#777777'
+    >
+         {this.renderListView('未施工')}
+         {this.renderListView('施工中')}
+         {this.renderListView('停滞中')}
+         {this.renderListView('已完成')}
+    </ScrollableTabView>
+
+        )
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -201,7 +235,7 @@ export default class PlanStatisticsSubView extends Component {
                 title={this.state.title}
                 leftIcon={require('../images/back.png')}
                 leftPress={this.back.bind(this)} />
-               {this.renderListView()}
+                {this.rendTabs()}
             </View>
         )
     }
@@ -218,12 +252,6 @@ export default class PlanStatisticsSubView extends Component {
                        <View style={styles.itemContainer}>
                         <TouchableOpacity onPress={this.onItemPress.bind(this, rowData)}>
                         <View style={styles.flexContainer}>
-
-                        <CircleLabelHeadView style={styles.head_cell}
-                            contactName = {rowData.name}
-                        >
-
-                        </CircleLabelHeadView>
 
                         <Text style={[styles.content,{marginLeft:10}]}>
                           {rowData.name}
@@ -299,18 +327,15 @@ export default class PlanStatisticsSubView extends Component {
             </View>
         )
     }
-    renderListView() {
+    renderListView(label) {
         return (
             <ListView
-                style={{ }}
+              tabLabel={label}
                 dataSource={this.state.dataSource}
                 renderRow={this.renderRow.bind(this)}
                 renderFooter={this.renderFooter.bind(this)}
                 onEndReached={this.onEndReached.bind(this)}
-               automaticallyAdjustContentInsets={false}
-               keyboardDismissMode="on-drag"
-               keyboardShouldPersistTaps={true}
-               showsVerticalScrollIndicator={false}
+
             />
         )
     }

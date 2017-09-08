@@ -16,7 +16,6 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import NavBar from '../common/NavBar'
 import TabView from '../Main/TabView'
 var Global = require('../common/globals');
-import { Button } from 'antd-mobile';
 
 var width = Dimensions.get('window').width;
 

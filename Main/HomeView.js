@@ -4,10 +4,10 @@ import {
     Text,
     View,
     Image,
-    TouchableOpacity,
     Platform,
+    ListView,
     TouchableNativeFeedback,
-    TouchableHighlight,
+    TouchableOpacity,
     ScrollView
 } from 'react-native';
 
@@ -17,8 +17,9 @@ import px2dp from '../common/util'
 import dateformat from 'dateformat'
 import HttpRequest from '../HttpRequest/HttpRequest'
 import ModuleTabView from './ModuleTabView';
+import PlanListView from './PlanListView';
 import Banner from 'react-native-banner';
-import { Badge,Grid,WhiteSpace } from 'antd-mobile';
+import Badge from 'react-native-smart-badge'
 
 const isIOS = Platform.OS == "ios"
 var width = Dimensions.get('window').width;
@@ -114,10 +115,14 @@ let dayCateArr = ['dateBefore', 'dateCurrent', 'dateAfter', 'dateWeek', 'dateMon
 export default class HomeView extends Component {
     constructor(props) {
         super(props)
+            var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+            var ds2 = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
         this.state = {
             selectedDayIndex: 1,
             selectedTypeIndex: 0,
             banners:[],
+            dataSource: ds,
+            dataSource2: ds2,
         };
     }
 
@@ -166,6 +171,12 @@ export default class HomeView extends Component {
             this.getModuleInfo()
         }, 1000 * 0.2);
 
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(moduleData),
+            dataSource2: this.state.dataSource2.cloneWithRows(bottomModuleData),
+        });
+
+
     }
 
 
@@ -207,6 +218,16 @@ export default class HomeView extends Component {
 
     onModuleItemClick(index,bottom) {
         console.log('Did click item at:' + index)
+        if (true) {
+            //test single page.
+            this.props.navigator.push({
+                component: PlanListView,
+                props:{
+                    data:{class:'sdd'}
+                }
+            })
+            return
+        }
             //
             var data = moduleData[index];
             if (bottom) {
@@ -253,7 +274,7 @@ export default class HomeView extends Component {
                  style={{width:width}}
                  >
                 {this.renderTopView()}
-                <WhiteSpace size="sm"  style={{backgroundColor:'#ffffff'}}/>
+                <View  style={{backgroundColor:'#ffffff',flex:1,height:8}}/>
                 {this.renderToolsView()}
                 {this.renderBottomModuleView()}
                  </ScrollView>
@@ -288,30 +309,44 @@ export default class HomeView extends Component {
         }
     }
 
+
+
+    renderOtherRow(item,sectionId,rowId){
+        return(
+            //format title
+            <TouchableOpacity style={{ paddingTop:10,paddingBottom:10,backgroundColor:'#ffffff',alignSelf:'stretch',flex:1}} key={item.index} onPress={() => { this.onModuleItemClick(item.index,true) }}>
+            <View style={[{ alignSelf:'stretch',flex:1 }, styles.toolsItem]}>
+
+                {this.renderDot(item)}
+
+                <Text style={{ fontSize: px2dp(12), color: "#3b3b3b" }}>{item.title}</Text>
+            </View>
+            </TouchableOpacity>
+
+
+
+
+        )
+    }
+
     renderBottomModuleView(){
 
         return(
-            <View style={[{ marginBottom:10,marginTop:10,}]}>
-            <Grid data={bottomModuleData}
-            columnNum={3}
-             hasLine={false}
-             renderItem={item => (
 
-                 //format title
-                 <TouchableHighlight style={{ alignSelf:'stretch',flex:1}} key={item.index} onPress={() => { this.onModuleItemClick(item.index,true) }}>
-                 <View style={[{ alignSelf:'stretch',flex:1 }, styles.toolsItem]}>
-
-                     {this.renderDot(item)}
-
-                     <Text style={{ fontSize: px2dp(12), color: "#3b3b3b" }}>{item.title}</Text>
-                 </View>
-                 </TouchableHighlight>
-
-
-             )}
-
-            />
-            </View>
+            <ListView
+              dataSource={this.state.dataSource2}
+              renderRow={this.renderOtherRow.bind(this)}
+              style={[{ marginBottom:10,marginTop:10,}]}
+               pageSize={3}
+              contentContainerStyle={{
+                  justifyContent: 'space-around',
+                    flexDirection:'row', //改变ListView的主轴方向
+                    flexWrap:'wrap', //换行
+                     alignItems:'center', // 必须设置,否则换行不起作用
+            }}
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
+          />
         )
 
     }
@@ -321,38 +356,53 @@ export default class HomeView extends Component {
 
         var data = moduleType[item.type]
         if (data && data.alert) {
-            return(<Badge dot>
-            <Image source={item.image} style={{ marginBottom: 10, width: 48, height: 48 }} resizeMode={Image.resizeMode.contain} />
-            </Badge>)
+            return(<View style={{flexDirection:"row"}}>
+
+            <Image source={item.image} style={{ marginBottom: 6, width: 48, height: 48}} resizeMode={Image.resizeMode.contain} />
+
+
+            </View>)
         }else{
 
-            return( <Image source={item.image} style={{ marginBottom: 10, width: 48, height: 48 }} resizeMode={Image.resizeMode.contain} />
+            return( <Image source={item.image} style={{ marginBottom: 6, width: 48, height: 48 }} resizeMode={Image.resizeMode.contain} />
             )
         }
     }
 
+    renderRow(item,sectionId,rowId){
+        return(
+
+            //format title
+            <TouchableOpacity style={{paddingTop:10,paddingBottom:10,backgroundColor:'#ffffff',width:width/4}} key={item.index} onPress={() => { this.onModuleItemClick(item.index,false) }}>
+            <View style={[{width:width/4}, styles.toolsItem]}>
+
+                {this.renderDot(item)}
+
+                <Text style={{ fontSize: px2dp(12), color: "#707070" }}>{item.title}</Text>
+            </View>
+            </TouchableOpacity>
+
+
+        )
+    }
+
     renderToolsView() {
         return(
-            <Grid data={moduleData}
-            style={[{ marginBottom:10,marginTop:10,}]}
-            columnNum={4}
-             hasLine={false}
-             renderItem={item => (
 
-                 //format title
-                 <TouchableHighlight style={{ alignSelf:'stretch',flex:1}} key={item.index} onPress={() => { this.onModuleItemClick(item.index,false) }}>
-                 <View style={[{ alignSelf:'stretch',flex:1 }, styles.toolsItem]}>
-
-                     {this.renderDot(item)}
-
-                     <Text style={{ fontSize: px2dp(12), color: "#707070" }}>{item.title}</Text>
-                 </View>
-                 </TouchableHighlight>
-
-
-             )}
-
-            />
+            <ListView
+              dataSource={this.state.dataSource}
+              renderRow={this.renderRow.bind(this)}
+               pageSize={4}
+              style={[{ marginBottom:10,}]}
+              contentContainerStyle={{
+                    justifyContent: 'space-around',
+                    flexDirection:'row', //改变ListView的主轴方向
+                    flexWrap:'wrap', //换行
+                    alignItems:'center', // 必须设置,否则换行不起作用
+            }}
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
+          />
         )
 
 
